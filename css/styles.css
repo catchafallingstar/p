@@ -37,6 +37,9 @@ body {
   background:var(--bg);
   color: var(--text);
   transition: background 0.3s ease, color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
@@ -289,9 +292,9 @@ h2 {
 }
 
 .footer {
-  padding: 18px 0 30px;
-  border-top: 1px solid rgba(255, 255, 255, .06);
-  color: var(--muted);
+  display: block;
+  padding: 18px 0 20px;
+  border-top: 1px solid var(--muted);
 }
 
 .footer .container {

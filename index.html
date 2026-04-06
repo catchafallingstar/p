@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Melody Bai's advanture</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-grid">
+      <img class="avatar" src="assets/headshot.jpg" alt="Your headshot" />
+      <div>
+        <h1 id="name">Melody Bai</h1>
+        <p id="tagline">e.g., CS @ UMich • Accessibility • Systems</p>
+        <div style="display: flex; gap: 12px; align-items: center; margin-top: 12px;">
+          <div class="links" id="links" style="margin-top: 0;"></div>
+          <button id="themeToggle" class="btn" style="cursor: pointer; background: var(--chip-bg); color: var(--text); border: 1px solid var(--border);">
+            Theme
+          </button>
+        </div>
+        <div class="links" id="links"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container layout">
+    <aside class="sidebar">
+      <section class="card">
+        <h2>Contact</h2>
+        <div id="contact"></div>
+      </section>
+
+      <section class="card">
+        <h2>Skills</h2>
+        <ul id="skills" class="chips"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Education</h2>
+        <div id="education"></div>
+      </section>
+    </aside>
+
+    <section class="content">
+      <section class="card">
+        <h2>About</h2>
+        <p id="about"></p>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Experience</h2>
+        </div>
+        <div id="experience"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Projects</h2>
+          <div class="search-wrap">
+            <input id="projectSearch" class="search" placeholder="Search projects…" />
+            <button id="filterToggle" class="btn filter-toggle">Filter: All ▾</button>
+          </div>
+        </div>
+        <div id="projectFilters" class="filters hidden"></div>
+        <div id="projects"></div>
+      </section>
+
+      <section class="card">
+        <h2>Publications</h2>
+        <div id="publications"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="year"></span> Melody Bai</span>
+       <span class="footer-right"><a href="assets/resume.pdf">Resume (PDF)</a></span><!-- go to the main page -->
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

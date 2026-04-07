@@ -15,13 +15,14 @@ window.SITE_DATA = {
      { label: "GitHub profile", value: "catchafallingstar", url: "https://github.com/catchafallingstar" },
   ],
 
-  skills: ["Python", "C++", "JavaScript", "Accessibility (WCAG)", "Git", "Linux"],
+  skills: ["Python", "C++", "C", "Java", "SQL", "JavaScript", 
+    "HTML5/CSS3", "LaTeX", "Pandas", "Git", "Adobe Illustrator"],
 
   education: [
     {
       school: "University of Michigan",
       degree: "B.S. in Computer Science Engineering",
-      years: "2023 – 2026",
+      years: "Aug 2023 – Dec 2026",
       details: "Relevant coursework: ____"
     }
   ],
@@ -29,16 +30,39 @@ window.SITE_DATA = {
   experience: [
     {
       role: "Accessibility Ambassador",
-      org: "University Library",
-      years: "202X – Present",
+      org: "Shapiro Undergraduate Library",
+      years: "Jan 2025 - Present",
       bullets: [
-        "Built accessible PDF and web workflows aligned with WCAG/PDF/UA.",
-        "Created tutorials and documentation for NVDA and document remediation."
+        "Spearheaded step-by-step 10+ tutorials for Adobe Acrobat to convert documents into accessible PDFs, ensuring compatibility with screen readers.",
+        "Developed instructional guides for assistive technologies including NVDA, Read & Write, and ZoomText to support students with diverse accessibility needs.",
+        "Conducted interviews with students and staff to improve accessibility at Shapiro Library."
+      ]
+    },
+    {
+      role: "Research Assistant",
+      org: "Dr. Tang's Research Group",
+      years: "Jan 2024 - Aug 2024",
+      bullets: [
+        "Created 8 scientific illustrations of skin layers and self-healing mechanisms using Adobe Illustrator.",
+        "Aided graduate students to design scientific graphs that documented findings for the lab."
       ]
     }
   ],
 
   projects: [
+    {
+      name: "Faculty Web Redesign & Migration",
+      tags: ["Web Development", "Accessibility", "Python", "HTML/CSS/JS"],
+      links: [{ label: "GitHub", url: "https://github.com/Catchafallingstar/ESTIR-web-redesign" }],
+      description: "Redesigned an electrochemistry research website using HTML/CSS/JS for improved accessibility, and automated the migration of 1,000+ legacy pages using Python."
+    },
+    {
+      name: "League of Legends Data Analysis",
+      tags: ["Database", "Machine Learning", "Python"],
+      links: [{ label: "GitHub", url: "https://github.com/Catchafallingstar/..." }],
+      description: "Analyzed over 10,000 professional match datasets using Python and Pandas to identify gameplay meta trends and team composition correlations."
+    },
+
     {
       name: "EECS 492 AI Project",
       tags: ["AI & Systems", "Python"],

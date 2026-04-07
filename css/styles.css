@@ -7,24 +7,24 @@
   --text: #e9eef6;
   --muted: #aab4c3;
   --border: #232b36;
-  --accent: #5a8dcaf9;
+  --accent: #aec8ff;
   --shadow: 0 10px 30px rgba(0, 0, 0, .35);
-  --chip-bg: rgba(255, 255, 255, .08);
+  --chip-bg: rgba(255, 255, 255, 0.116);
   --hover-bg: rgba(255, 255, 255, .12);
 
 }
 [data-theme="light"] {
-  --h2: #0025df;
-  --bg: #ffffff;
+  --h2: #1e3a8a;
+  --bg:#f2f9ff;
   --bg-top: #f8fafc;
   --bg-bottom: #f1f5f9;
   --card: #ffffff;
-  --text: #0f172a;
+  --text: #334155;
   --muted: #64748b;
   --border: #e2e8f0;
-  --accent: #2563eb;
-  --shadow: 0 4px 12px rgba(0,0,0,.05);
-  --chip-bg: rgba(0,0,0,.04);
+  --accent: #0744c7;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.096);
+  --chip-bg: rgba(0, 0, 0, 0.048);
   --hover-bg: rgba(0,0,0,.08);
 }
 * {
@@ -319,7 +319,22 @@ h2 {
     border-radius: 16px;
   }
 
-  .search {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start; /* Aligns everything to the left */
+    gap: 5px; /* Adds a  gap between the Title and the Search bar */
+    margin: 0 0 12px 0;
+  }
+
+  /* Make the wrapper take up the full width of the screen */
+  .search-wrap {
     width: 100%;
+  }
+
+  /* Allow the search bar to fill the available space next to the filter button */
+  .search {
+    flex: 1; 
+    width: 100%;
+    
   }
 }

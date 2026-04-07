@@ -21,7 +21,7 @@
             Theme
           </button>
         </div>
-        <div class="links" id="links"></div>
+        <!-- <div class="links" id="links"></div>  see data.js, I made the links empty -->
       </div>
     </div>
   </header>
@@ -85,6 +85,16 @@
 
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
+  <script> // Open external links in a new tab
+  document.querySelectorAll('a').forEach(link => {
+    // Only applies to links starting with http (external)
+    if (link.href.indexOf('http') === 0) {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer'); // Security best practice
+    }
+  });
+</script>
+
 </body>
 
 </html>

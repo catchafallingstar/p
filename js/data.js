@@ -4,15 +4,15 @@ window.SITE_DATA = {
   about:
     "Write 2–4 sentences about what you do, what you’re interested in, and what you’re looking for.",
 
-  links: [
-    { label: "GitHub", url: "https://github.com/yourname" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/yourname" },
-    { label: "Email", url: "mailto:you@example.com" }
+   links: [
+   
   ],
 
   contact: [
-    { label: "Email", value: "you@example.com", url: "mailto:you@example.com" },
-    { label: "Location", value: "Ann Arbor, MI" }
+    { label: "Email", value: "bxybai@umich.edu", url: "mailto:bxybai@umich.edu" },
+    { label: "LinkedIn", value: "Melody Bai", url: "https://www.linkedin.com/in/melody-bai-1101051212121212121212" },
+    { label: "Location", value: "Ann Arbor, MI" },
+     { label: "GitHub profile", value: "catchafallingstar", url: "https://github.com/catchafallingstar" },
   ],
 
   skills: ["Python", "C++", "JavaScript", "Accessibility (WCAG)", "Git", "Linux"],

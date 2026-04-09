@@ -4,97 +4,99 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Melody Bai's advanture</title>
+  <title>Melody's Adventure</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
-  <header class="header">
-    <div class="container header-grid">
-      <img class="avatar" src="assets/headshot.jpg" alt="Your headshot" />
-      <div>
-        <h1 id="name">Melody Bai</h1>
-        <p id="tagline">e.g., CS @ UMich • Accessibility • Systems</p>
-        <div style="display: flex; gap: 12px; align-items: center; margin-top: 12px;">
-          <div class="links" id="links" style="margin-top: 0;"></div>
-          <button id="themeToggle" class="btn" style="cursor: pointer; background: var(--chip-bg); color: var(--text); border: 1px solid var(--border);">
-            Theme
-          </button>
-        </div>
-        <!-- <div class="links" id="links"></div>  see data.js, I made the links empty -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="logo">
+        <span id="nav-name">Melody Bai</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about-sec">About Me</a></li>
+        <li><a href="#experience-sec">Experience</a></li>
+        <li><a href="#skills-sec">Skills</a></li>
+        <li><a href="#projects-sec">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="home" class="hero container">
+    <div class="hero-content">
+      <div class="hero-badge">Go blue! Welcome to my corner of interest</div>
+      <h1><span class="gradient-cyan">Hi there, I'm</span> <span class="gradient-purple">Melody</span></h1>
+      <p class="hero-subtitle" id="tagline">CS @ UMich • Accessibility • Systems</p>
+      <div class="hero-actions">
+        <!-- <a href="#projects-sec" class="btn primary-btn">Explore My Universe</a>
+      <a href="assets/resume.pdf" target="_blank" class="btn secondary-btn">Download CV</a> -->
+        <p class="btn primary-btn">Scroll down to explore</p>
+      </div>
+      <div id="links" class="social-links"></div>
+    </div>
+    <div class="hero-graphic">
+      <canvas id="networkCanvas"></canvas>
+    </div>
+  </section>
+
+  <section id="about-sec" class="container section">
+    <h2 class="section-title">About Me</h2>
+    <p class="section-subtitle">Get to know the person behind the code</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p id="about"></p>
+        <div id="education" class="education-wrap"></div>
+      </div>
+      <div class="about-image">
+        <img class="avatar" src="assets/headshot.jpg" alt="Melody Bai" />
       </div>
     </div>
-  </header>
+  </section>
 
-  <main class="container layout">
-    <aside class="sidebar">
-      <section class="card">
-        <h2>Contact</h2>
-        <div id="contact"></div>
-      </section>
+  <section id="experience-sec" class="container section">
+    <h2 class="section-title">Experience</h2>
+    <p class="section-subtitle">My professional journey</p>
+    <div id="experience" class="timeline"></div>
+  </section>
 
-      <section class="card">
-        <h2>Skills</h2>
-        <ul id="skills" class="chips"></ul>
-      </section>
+  <section id="skills-sec" class="container section relative">
+    <div class="glow glow-green"></div>
+    <h2 class="section-title">Skills & Technologies</h2>
+    <p class="section-subtitle">The magical tools I use to bring ideas to life</p>
+    <ul id="skills" class="skills-grid"></ul>
+  </section>
 
-      <section class="card">
-        <h2>Education</h2>
-        <div id="education"></div>
-      </section>
-    </aside>
+  <section id="projects-sec" class="container section">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">A showcase of my creative work and technical expertise</p>
 
-    <section class="content">
-      <section class="card">
-        <h2>About</h2>
-        <p id="about"></p>
-      </section>
+    <div class="search-wrap" style="justify-content: center; margin-bottom: 2rem;">
+      <input id="projectSearch" class="search" placeholder="Search projects…" />
+      <button id="filterToggle" class="btn secondary-btn">Filter: All ▾</button>
+    </div>
+    <div id="projectFilters" class="filters hidden"></div>
 
-      <section class="card">
-        <div class="section-header">
-          <h2>Experience</h2>
-        </div>
-        <div id="experience"></div>
-      </section>
+    <div id="projects" class="projects-grid"></div>
+  </section>
 
-      <section class="card">
-        <div class="section-header">
-          <h2>Projects</h2>
-          <div class="search-wrap">
-            <input id="projectSearch" class="search" placeholder="Search projects…" />
-            <button id="filterToggle" class="btn filter-toggle">Filter: All ▾</button>
-          </div>
-        </div>
-        <div id="projectFilters" class="filters hidden"></div>
-        <div id="projects"></div>
-      </section>
-
-      <!-- <section class="card">
-        <h2>Publications</h2>
-        <div id="publications"></div>
-      </section>
-    </section>   see data.js, I made the links empty since nothing yet-->
-  </main>
+  <section id="contact-sec" class="container section">
+    <h2 class="section-title">Get in Touch</h2>
+    <p class="section-subtitle">Let's create something amazing together.</p>
+    <div class="contact-card">
+      <div id="contact"></div>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="container">
       <span>© <span id="year"></span> Melody Bai</span>
-       <span class="footer-right"><a href="assets/resume.pdf">Resume (PDF)</a></span><!-- go to the main page -->
     </div>
   </footer>
 
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
-  <script> // Open external links in a new tab
-  document.querySelectorAll('a').forEach(link => {
-    // Only applies to links starting with http (external)
-    if (link.href.indexOf('http') === 0) {
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer'); // Security best practice
-    }
-  });
-</script>
-
 </body>
 
 </html>

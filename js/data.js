@@ -51,9 +51,9 @@ window.SITE_DATA = {
 
   projects: [
     {
-      name: "Faculty Web Redesign & Migration",
+      name: "ECS Electrochemistry Knowledge Base Web Redesign & Migration",
       tags: ["Web Development", "Accessibility", "Python", "HTML/CSS/JS"],
-      links: [{ label: "GitHub", url: "https://github.com/Catchafallingstar/ESTIR-web-redesign" }],
+      links: [{ label: "GitHub", url: "https://patrickyang23.github.io/ESTIR-Web-Design/" }],
       description: "Redesigned an electrochemistry research website using HTML/CSS/JS for improved accessibility, and automated the migration of 1,000+ legacy pages using Python."
     },
     {
@@ -64,32 +64,35 @@ window.SITE_DATA = {
     },
 
     {
-      name: "EECS 492 AI Project",
-      tags: ["AI & Systems", "Python"],
-      links: [{ label: "GitHub", url: "https://github.com/..." }],
-      description: "Implemented search algorithms and machine learning models to solve complex state-space problems."
+      name: "CIFAR-10 Image Classification Models", // deep learning project, NN, image classification
+      tags: ["Machine Learning", "Python"],
+       links: [],// [{ label: "GitHub", url: "https://github.com/..." }], // Link to a repo if you upload your code!
+      description: "Designed and trained Convolutional Neural Networks (CNN) and Fully Connected Networks in Python to classify CIFAR-10 images. Conducted hyperparameter tuning on learning rates and activation functions (ReLU/Sigmoid) to optimize test accuracy."
     },
     {
-      name: "Automated QA Testing Suite",
-      tags: ["Automated Testing", "Python"],
-      links: [{ label: "GitHub", url: "https://github.com/..." }],
-      description: "Developed robust Python test scripts to automate UI testing, catch edge-case bugs, and ensure software reliability."
+      name: "Reinforcement Learning Agents",
+      tags: ["Machine Learning", "Python", "AI & Systems"],
+      links: [], // [{ label: "GitHub", url: "https://github.com/..." }],
+      description: "Developed Reinforcement Learning agents using Q-Learning and Active Adaptive Dynamic Programming (ADP) to navigate and maximize rewards in highly stochastic environments."
     },
     {
-      name: "Full-Stack Web App",
-      tags: ["Web Development", "Databases"],
-      links: [
-        { label: "Live Demo", url: "https://..." },
-        { label: "GitHub", url: "https://github.com/..." }
-      ],
-      description: "Built a responsive web application utilizing HTML/CSS/JS on the frontend and a SQL*Plus relational database backend."
+      name: "Software Coverage Analysis",
+      tags: ["Automated Testing", "Python", "C++", "Java", "Linux"], 
+      links: [], // Leave empty if you cannot post class code to GitHub!
+      description: "Designed high-coverage test suites for massive legacy codebases (385,000+ lines of code) including libpng and JFreeChart. Utilized white-box and black-box methodologies, and tools like gcov and cobertura, to maximize statement and branch coverage across C, Java, and Python environments."
     },
     {
-      name: "C++ Language Translator Tool",
-      tags: ["AI & Systems", "C++"],
-      links: [{ label: "GitHub", url: "https://github.com/..." }],
-      description: "Engineered a high-performance C++ program designed to process and translate string inputs efficiently."
-    }
+      name: "Mutation Testing & Automated Fuzzing Suite",
+      tags: ["Automated Testing", "Python", "C++", "Java"],
+      links: [], 
+      description: "Developed a custom Python testing framework utilizing Abstract Syntax Trees (AST) to perform mutation testing and evaluate test suite adequacy. Additionally, orchestrated industry-standard fuzzing tools like American Fuzzy Lop (AFL) and Randoop to automatically discover edge-case vulnerabilities in C++ and Java codebases."
+    },
+    {
+      name: "Algorithmic Debugging & Fault Localization",
+      tags: ["Automated Testing", "Python", "AI & Systems"],
+      links: [],
+      description: "Engineered automated debugging algorithms in Python to accelerate software maintenance. Implemented Delta Debugging to programmatically minimize complex failing inputs, and built a Coverage-Based Fault Localization tool to mathematically isolate defective code lines using test execution traces."
+    },
   ], 
 
   publications: [

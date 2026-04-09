@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Melody's Adventure</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
@@ -16,43 +17,36 @@
       </div>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
-        <li><a href="#about-sec">About Me</a></li>
+        <li><a href="#education-sec">Education</a></li>
         <li><a href="#experience-sec">Experience</a></li>
         <li><a href="#skills-sec">Skills</a></li>
         <li><a href="#projects-sec">Projects</a></li>
+        <li><a href="#contact-sec">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <section id="home" class="hero container">
+<section id="home" class="hero container">
     <div class="hero-content">
-      <div class="hero-badge">Go blue! Welcome to my corner of interest</div>
-      <h1><span class="gradient-cyan">Hi there, I'm</span> <span class="gradient-purple">Melody</span></h1>
-      <p class="hero-subtitle" id="tagline">CS @ UMich • Accessibility • Systems</p>
-      <div class="hero-actions">
-        <!-- <a href="#projects-sec" class="btn primary-btn">Explore My Universe</a>
-      <a href="assets/resume.pdf" target="_blank" class="btn secondary-btn">Download CV</a> -->
-        <p class="btn primary-btn">Scroll down to explore</p>
-      </div>
+      <div class="gradient-blue"> <h2>Welcome to my corner of interest! I'm</h2></div>
+      <h1>Melody Bai</h1>
+      <h2 class="gradient-maize" id="tagline" style="margin-bottom: 15px;"></h2>
+      
+      <p id="about" style="max-width: 550px; margin-top: 0; margin-bottom: 30px; font-size: 1.05rem; color: var(--muted);"></p>
+      
       <div id="links" class="social-links"></div>
     </div>
-    <div class="hero-graphic">
-      <canvas id="networkCanvas"></canvas>
+
+    <div class="hero-image-right">
+      <img src="assets/headshot.png" alt="Melody Bai" class="hero-portrait" />
     </div>
   </section>
 
-  <section id="about-sec" class="container section">
-    <h2 class="section-title">About Me</h2>
-    <p class="section-subtitle">Get to know the person behind the code</p>
-    <div class="about-grid">
-      <div class="about-text">
-        <p id="about"></p>
-        <div id="education" class="education-wrap"></div>
-      </div>
-      <div class="about-image">
-        <img class="avatar" src="assets/headshot.jpg" alt="Melody Bai" />
-      </div>
-    </div>
+  <section id="education-sec" class="container section">
+    <h2 class="section-title">Education</h2>
+    <p class="section-subtitle">My academic background at the University of Michigan</p>
+    
+    <div id="education" class="education-wrap" style="margin-top: 0; border-top: none; padding-top: 0;"></div>
   </section>
 
   <section id="experience-sec" class="container section">
@@ -82,7 +76,7 @@
   </section>
 
   <section id="contact-sec" class="container section">
-    <h2 class="section-title">Get in Touch</h2>
+    <h2 class="section-title">Contact</h2>
     <p class="section-subtitle">Let's create something amazing together.</p>
     <div class="contact-card">
       <div id="contact"></div>

@@ -83,6 +83,28 @@ function renderProjects(data) {
   data.projects.forEach((p) => wrap.appendChild(projectCard(p)));
 }
 
+function renderLinks(data) {
+  const wrap = $("links");
+  if (!wrap) return;
+  wrap.innerHTML = ""; // Clear out any existing links
+
+  data.links.forEach((l) => {
+    // Check if the link has an icon defined in data.js
+    if (l.icon) {
+      // Create the Icon
+      const iconEl = el("i", { class: l.icon });
+      
+      // Wrap it in the <a> tag
+      const a = el("a", { class: "btn icon-link", href: l.url, target: "_blank", rel: "noreferrer", title: l.label }, [iconEl]);
+      
+      wrap.appendChild(a);
+    } else {
+      // Fallback: If you forgot to add an icon, it just draws text like before
+      const a = el("a", { class: "btn icon-link", href: l.url, target: "_blank", rel: "noreferrer", text: l.label });
+      wrap.appendChild(a);
+    }
+  });
+}
 function setupProjectFilters(data) {
   const searchInput = $("projectSearch");
   const filterToggle = $("filterToggle");
@@ -208,5 +230,6 @@ function setupProjectFilters(data) {
   renderEducation(data);
   renderExperience(data);
   renderProjects(data);
+  renderLinks(data);
   setupProjectFilters(data);
 })();

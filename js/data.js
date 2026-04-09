@@ -4,8 +4,27 @@ window.SITE_DATA = {
   about:
     "Write 2–4 sentences about what you do, what you’re interested in, and what you’re looking for.",
 
-   links: [
-   
+  links: [
+    { 
+      label: "GitHub", 
+      url: "https://github.com/catchafallingstar", 
+      icon: "fab fa-github" // 
+    },
+    { 
+      label: "LinkedIn", 
+      url: "https://linkedin.com/in/melody-bai-1101051212121212121212", 
+      icon: "fab fa-linkedin" // 
+    },
+    { 
+      label: "Email", 
+      url: "mailto:bxybai@umich.edu", 
+      icon: "fas fa-envelope" // 
+    },
+    {
+      label: "Resume",
+      url: "assets/Melody_Bai_Resume.pdf",
+      icon: "fas fa-file-alt"
+    }
   ],
 
   contact: [

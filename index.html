@@ -15,7 +15,12 @@
       <div class="logo">
         <span id="nav-name">Melody Bai</span>
       </div>
-      <ul class="nav-links">
+      
+      <button class="mobile-toggle" id="mobileToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#education-sec">Education</a></li>
         <li><a href="#experience-sec">Experience</a></li>
@@ -26,14 +31,17 @@
     </div>
   </nav>
 
-<section id="home" class="hero container">
+  <section id="home" class="hero container">
     <div class="hero-content">
-      <div class="gradient-blue"> <h2>Welcome to my corner of interest! I'm</h2></div>
+      <div class="gradient-blue">
+        <h2>Welcome to my corner of interest! I'm</h2>
+      </div>
       <h1>Melody Bai</h1>
       <h2 class="gradient-maize" id="tagline" style="margin-bottom: 15px;"></h2>
-      
-      <p id="about" style="max-width: 550px; margin-top: 0; margin-bottom: 30px; font-size: 1.05rem; color: var(--muted);"></p>
-      
+
+      <p id="about"
+        style="max-width: 550px; margin-top: 0; margin-bottom: 30px; font-size: 1.05rem; color: var(--muted);"></p>
+
       <div id="links" class="social-links"></div>
     </div>
 
@@ -45,7 +53,7 @@
   <section id="education-sec" class="container section">
     <h2 class="section-title">Education</h2>
     <p class="section-subtitle">My academic background at the University of Michigan</p>
-    
+
     <div id="education" class="education-wrap" style="margin-top: 0; border-top: none; padding-top: 0;"></div>
   </section>
 
@@ -78,8 +86,33 @@
   <section id="contact-sec" class="container section">
     <h2 class="section-title">Contact</h2>
     <p class="section-subtitle">Let's create something amazing together.</p>
-    <div class="contact-card">
-      <div id="contact"></div>
+
+    <div class="contact-card contact-grid">
+      <div class="contact-info">
+        <h3 style="margin-top: 0; color: var(--maize); margin-bottom: 20px;">Get In Touch</h3>
+        <div id="contact"></div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="your name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="youremail@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required
+              placeholder="Enter your text here..."></textarea>
+          </div>
+          <button type="submit" class="btn submit-btn">
+            Send Message <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
     </div>
   </section>
 

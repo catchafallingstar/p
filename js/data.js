@@ -5,19 +5,19 @@ window.SITE_DATA = {
     "Write 2–4 sentences about what you do, what you’re interested in, and what you’re looking for.",
 
   links: [
-    { 
-      label: "GitHub", 
-      url: "https://github.com/catchafallingstar", 
+    {
+      label: "GitHub",
+      url: "https://github.com/catchafallingstar",
       icon: "fab fa-github" // 
     },
-    { 
-      label: "LinkedIn", 
-      url: "https://linkedin.com/in/melody-bai-1101051212121212121212", 
+    {
+      label: "LinkedIn",
+      url: "https://linkedin.com/in/melody-bai-1101051212121212121212",
       icon: "fab fa-linkedin" // 
     },
-    { 
-      label: "Email", 
-      url: "mailto:bxybai@umich.edu", 
+    {
+      label: "Email",
+      url: "mailto:bxybai@umich.edu",
       icon: "fas fa-envelope" // 
     },
     {
@@ -31,10 +31,10 @@ window.SITE_DATA = {
     { label: "Email", value: "bxybai@umich.edu", url: "mailto:bxybai@umich.edu" },
     { label: "LinkedIn", value: "Melody Bai", url: "https://www.linkedin.com/in/melody-bai-1101051212121212121212" },
     { label: "Location", value: "Ann Arbor, MI" },
-     { label: "GitHub profile", value: "catchafallingstar", url: "https://github.com/catchafallingstar" },
+    { label: "GitHub profile", value: "catchafallingstar", url: "https://github.com/catchafallingstar" },
   ],
 
-  skills: ["Python", "C++", "C", "Java", "SQL", "JavaScript", 
+  skills: ["Python", "C++", "C", "Java", "SQL", "JavaScript",
     "HTML5/CSS3", "LaTeX", "Pandas", "Git", "Adobe Illustrator"],
 
   education: [
@@ -70,6 +70,7 @@ window.SITE_DATA = {
 
   projects: [
     {
+      image: "assets/ESTIR.jpg", // Optional: add an image for the project card (make sure to put the image in the assets folder!)
       name: "ECS Electrochemistry Knowledge Base Web Redesign & Migration",
       tags: ["Web Development", "Accessibility", "Python", "HTML/CSS/JS"],
       links: [{ label: "GitHub", url: "https://patrickyang23.github.io/ESTIR-Web-Design/" }],
@@ -85,7 +86,7 @@ window.SITE_DATA = {
     {
       name: "CIFAR-10 Image Classification Models", // deep learning project, NN, image classification
       tags: ["Machine Learning", "Python"],
-       links: [],// [{ label: "GitHub", url: "https://github.com/..." }], // Link to a repo if you upload your code!
+      links: [],// [{ label: "GitHub", url: "https://github.com/..." }], // Link to a repo if you upload your code!
       description: "Designed and trained Convolutional Neural Networks (CNN) and Fully Connected Networks in Python to classify CIFAR-10 images. Conducted hyperparameter tuning on learning rates and activation functions (ReLU/Sigmoid) to optimize test accuracy."
     },
     {
@@ -96,14 +97,14 @@ window.SITE_DATA = {
     },
     {
       name: "Software Coverage Analysis",
-      tags: ["Automated Testing", "Python", "C++", "Java", "Linux"], 
+      tags: ["Automated Testing", "Python", "C++", "Java", "Linux"],
       links: [], // Leave empty if you cannot post class code to GitHub!
       description: "Designed high-coverage test suites for massive legacy codebases (385,000+ lines of code) including libpng and JFreeChart. Utilized white-box and black-box methodologies, and tools like gcov and cobertura, to maximize statement and branch coverage across C, Java, and Python environments."
     },
     {
       name: "Mutation Testing & Automated Fuzzing Suite",
       tags: ["Automated Testing", "Python", "C++", "Java"],
-      links: [], 
+      links: [],
       description: "Developed a custom Python testing framework utilizing Abstract Syntax Trees (AST) to perform mutation testing and evaluate test suite adequacy. Additionally, orchestrated industry-standard fuzzing tools like American Fuzzy Lop (AFL) and Randoop to automatically discover edge-case vulnerabilities in C++ and Java codebases."
     },
     {
@@ -112,7 +113,7 @@ window.SITE_DATA = {
       links: [],
       description: "Engineered automated debugging algorithms in Python to accelerate software maintenance. Implemented Delta Debugging to programmatically minimize complex failing inputs, and built a Coverage-Based Fault Localization tool to mathematically isolate defective code lines using test execution traces."
     },
-  ], 
+  ],
 
   publications: [
   ]

@@ -1,22 +1,29 @@
 :root {
   /* UMich Dark Theme Colors */
-  --bg: #020813; /* Very deep navy/black */
-  --card: #001A33; /* Dark UMich Blue variant */
+  --bg: #020813;
+  /* Very deep navy/black */
+  --card: #001A33;
+  /* Dark UMich Blue variant */
   --text: #e9eef6;
   --muted: #8a9bb2;
-  --border: #00274C; /* Official UMich Blue */
-  
+  --border: #00274C;
+  /* Official UMich Blue */
+
   /* Neon UMich Accents */
-  --maize: #FFCB05; /* Official UMich Maize */
+  --maize: #FFCB05;
+  /* Official UMich Maize */
   --neon-maize: #ffe566;
   --neon-blue: #45a2ff;
   --dark-blue: #00274C;
-  
+
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --chip-bg: rgba(255, 203, 5, 0.08); /* Faint maize tint */
+  --chip-bg: rgba(255, 203, 5, 0.08);
+  /* Faint maize tint */
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -25,27 +32,41 @@ body {
   color: var(--text);
   line-height: 1.6;
   /* Faint Blue Grid Background */
-  background-image: 
+  background-image:
     linear-gradient(rgba(69, 162, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(69, 162, 255, 0.04) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
-a { color: var(--neon-blue); text-decoration: none; transition: 0.3s; }
-a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5); }
+a {
+  color: var(--neon-blue);
+  text-decoration: none;
+  transition: 0.3s;
+}
 
-.container { width: min(1000px, 90vw); margin: 0 auto; }
+a:hover {
+  color: var(--neon-maize);
+  text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
+}
+
+.container {
+  width: min(1000px, 90vw);
+  margin: 0 auto;
+}
 
 /* Navigation */
 .top-nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   background: rgba(2, 8, 19, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   z-index: 100;
   padding: 15px 0;
 }
+
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -53,27 +74,61 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
   width: min(1200px, 90vw);
   margin: 0 auto;
 }
-.logo { font-weight: bold; font-size: 1.2rem; }
-.logo span:first-child { color: var(--maize); }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001;
+  /* Keeps it above the sidebar when open */
+  transition: color 0.3s;
+}
+
+.mobile-toggle:hover {
+  color: var(--maize);
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.logo span:first-child {
+  color: var(--maize);
+}
+
 .nav-links {
   display: flex;
   gap: 20px;
   list-style: none;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
 }
-.nav-links a { color: var(--text); font-size: 0.9rem; }
-.nav-links a:hover { color: var(--maize); }
+
+.nav-links a {
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.nav-links a:hover {
+  color: var(--maize);
+}
 
 /* Hero Section */
 #home {
 
   align-items: center;
   position: relative;
-  
+
 }
+
 .hero {
   display: grid;
-  grid-template-columns: 1.2fr auto; /* Gives the text slightly more room than the image */
+  grid-template-columns: 1.2fr auto;
+  /* Gives the text slightly more room than the image */
   align-items: center;
   gap: 60px;
   padding-top: 90px;
@@ -82,7 +137,8 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
 /* Right Side Image Container */
 .hero-image-right {
   display: flex;
-  justify-content: flex-end; /* Pushes the image to the right edge */
+  justify-content: flex-end;
+  /* Pushes the image to the right edge */
   align-items: center;
   position: relative;
 }
@@ -90,13 +146,17 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
 /* The Portrait Image Styling (Like Akash's) */
 .hero-portrait {
   width: 100%;
-  max-width: 380px; /* Controls how large the image gets */
+  max-width: 380px;
+  /* Controls how large the image gets */
   height: auto;
-  aspect-ratio: 4/5; /* Gives it a nice vertical portrait shape */
+  aspect-ratio: 4/5;
+  /* Gives it a nice vertical portrait shape */
   object-fit: cover;
-  border-radius: 24px; /* Soft rounded corners instead of a full circle */
+  border-radius: 24px;
+  /* Soft rounded corners instead of a full circle */
   border: 1px solid var(--border);
-  box-shadow: 0 20px 40px rgba(0, 39, 76, 0.4); /* Subtle UMich Blue drop shadow */
+  box-shadow: 0 20px 40px rgba(0, 39, 76, 0.4);
+  /* Subtle UMich Blue drop shadow */
   z-index: 2;
 }
 
@@ -127,16 +187,26 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   /* Adds a subtle glow behind the text */
-  filter: drop-shadow(0 0 8px rgba(255, 203, 5, 0.3)); 
+  filter: drop-shadow(0 0 8px rgba(255, 203, 5, 0.3));
 }
+
 .gradient-blue {
   background: linear-gradient(to right, #88c0ff, var(--neon-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.hero-subtitle { font-size: 1.2rem; color: var(--muted); max-width: 600px; }
-.hero-actions { display: flex; gap: 15px; margin-top: 30px; }
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 600px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
 
 /* Glowing Buttons */
 .btn {
@@ -147,14 +217,19 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
   border: none;
   transition: all 0.3s ease;
 }
+
 /* --- Social Link Icon Sizing --- */
 #links a.icon-link {
-  font-size: 2.2rem; /* <-- Change this number to make them bigger or smaller */
+  font-size: 2.2rem;
+  /* <-- Change this number to make them bigger or smaller */
   color: var(--muted);
   transition: all 0.2s ease;
-  border: none; /* Removes any default button borders */
-  background: transparent; /* Removes any default button background */
-  padding: 0 30px; /* Gives them a little breathing room side-to-side */
+  border: none;
+  /* Removes any default button borders */
+  background: transparent;
+  /* Removes any default button background */
+  padding: 0 30px;
+  /* Gives them a little breathing room side-to-side */
 }
 
 /* Optional: Make them glow UMich Maize when you hover over them */
@@ -162,29 +237,36 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
   color: var(--maize);
   transform: translateY(-3px);
 }
+
 .primary-btn {
   background: var(--maize);
   color: var(--dark-blue);
   box-shadow: 0 0 20px rgba(255, 203, 5, 0.3);
 }
+
 .primary-btn:hover {
   background: var(--neon-maize);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.6);
   transform: translateY(-2px);
   color: var(--bg);
 }
+
 .secondary-btn {
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--border);
 }
+
 .secondary-btn:hover {
   border-color: var(--maize);
   color: var(--maize);
 }
 
 /* Background Ambient Glows */
-.relative { position: relative; }
+.relative {
+  position: relative;
+}
+
 .glow-maize {
   position: absolute;
   width: 400px;
@@ -198,13 +280,17 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
 }
 
 /* Sections */
-.section { padding: 100px 0; }
+.section {
+  padding: 100px 0;
+}
+
 .section-title {
   text-align: center;
   font-size: 2.5rem;
   margin: 0 0 10px 0;
   color: var(--text);
 }
+
 .section-subtitle {
   text-align: center;
   color: var(--muted);
@@ -212,9 +298,25 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
 }
 
 /* About Section */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-.avatar { width: 100%; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 0 20px rgba(0, 39, 76, 0.5); }
-.education-wrap { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 20px;}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.avatar {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 20px rgba(0, 39, 76, 0.5);
+}
+
+.education-wrap {
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
 
 /* Projects Grid */
 .projects-grid {
@@ -222,6 +324,7 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 25px;
 }
+
 .project-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -229,11 +332,13 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
   padding: 20px;
   transition: all 0.3s ease;
 }
-.project-card:hover { 
-  transform: translateY(-5px); 
-  border-color: var(--maize); 
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--maize);
   box-shadow: 0 10px 30px rgba(255, 203, 5, 0.1);
 }
+
 .project-img-placeholder {
   height: 160px;
   background: linear-gradient(45deg, var(--bg), var(--border));
@@ -250,6 +355,7 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
   list-style: none;
   padding: 0;
 }
+
 .skill-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -258,21 +364,106 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
   font-weight: bold;
   transition: 0.3s;
 }
+
 .skill-card:hover {
   border-color: var(--neon-blue);
   background: rgba(69, 162, 255, 0.1);
 }
 
+/* --- Contact Form Grid --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  /* Makes the form slightly wider than the info */
+  gap: 40px;
+  text-align: left;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Styling the inputs and text area */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* The Glowing Focus Effect */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--maize);
+  box-shadow: 0 0 15px rgba(255, 203, 5, 0.2);
+  background: var(--bg);
+}
+
+/* Submit Button */
+.submit-btn {
+  background: var(--maize);
+  color: var(--bg);
+  border: none;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+}
+
+.submit-btn:hover {
+  background: var(--neon-maize);
+  box-shadow: 0 0 20px rgba(255, 203, 5, 0.4);
+  transform: translateY(-2px);
+}
+
+
 /* Utilities */
-.chips-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
-.chip { 
-  background: var(--chip-bg); 
+.chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.chip {
+  background: var(--chip-bg);
   color: var(--neon-maize);
   border: 1px solid rgba(255, 203, 5, 0.2);
-  padding: 4px 10px; 
-  border-radius: 20px; 
-  font-size: 0.8rem; 
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
 }
+
 /* Filter Panel Styles */
 /* .filters {
   background: var(--card);
@@ -286,46 +477,137 @@ a:hover { color: var(--neon-maize); text-shadow: 0 0 8px rgba(255, 203, 5, 0.5);
 .hidden {
   display: none !important;
 }
+
 .skill-card:hover {
   border-color: var(--neon-blue);
   background: rgba(255, 255, 255, 0.1);
 }
+
 .primary-btn:hover {
   background: var(--neon-maize);
   box-shadow: 0 0 30px rgba(255, 203, 5, 0.6);
   transform: translateY(-2px);
   color: var(--bg);
 }
+
 .secondary-btn:hover {
   border-color: var(--maize);
   color: var(--maize);
 }
-.muted { color: var(--muted); font-size: 0.9rem; }
-.item-title { font-weight: bold; font-size: 1.2rem; margin-bottom: 5px; color: var(--maize); }
-.timeline .item { background: var(--card); border: 1px solid var(--border); padding: 20px; border-radius: 12px; margin-bottom: 15px; }
-.search { padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: white; }
-.search:focus { outline: none; border-color: var(--maize); box-shadow: 0 0 10px rgba(255, 203, 5, 0.2); }
+
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.item-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: var(--maize);
+}
+
+.timeline .item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.search {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: white;
+}
+
+.search:focus {
+  outline: none;
+  border-color: var(--maize);
+  box-shadow: 0 0 10px rgba(255, 203, 5, 0.2);
+}
 
 /* Mobile Responsiveness (Stacks them on small screens) */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+    /* Show the hamburger icon */
+  }
+  .logo {
+    display: none;
+  }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    /* Hide it off-screen to the right by default */
+    width: 280px;
+    height: 100vh;
+    background: rgba(2, 8, 19, 0.98);
+    /* Deep UMich dark background */
+    backdrop-filter: blur(15px);
+    border-left: 1px solid var(--border);
+    flex-direction: column;
+    justify-content: center;
+    /* Center links vertically */
+    align-items: center;
+    gap: 40px;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Smooth sliding animation */
+    z-index: 1000;
+  }
+
+  /* When the JavaScript adds this class, it slides in! */
+  .nav-links.active {
+    right: 0;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: block;
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+
+  
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
     gap: 30px;
   }
-  
+
   /* Centers the About text on mobile */
   .hero-content p#about {
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .hero-image-right {
     justify-content: center;
-    grid-row: 1; /* Moves the picture ABOVE the text on mobile phones */
+    grid-row: 1;
+    /* Moves the picture ABOVE the text on mobile phones */
   }
-  
+
   .hero-portrait {
-    max-width: 280px; /* Slightly smaller image on phones */
+    max-width: 280px;
+    /* Slightly smaller image on phones */
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    /* Stacks the info and form on top of each other on mobile */
+  }
+
+  .search-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }

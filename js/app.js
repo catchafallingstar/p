@@ -216,7 +216,35 @@ function setupProjectFilters(data) {
   // Call it once to render projects initially based on default "All Projects"
   renderFilteredProjects();
 }
+function setupMobileMenu() {
+  const toggleBtn = $("mobileToggle");
+  const navLinks = $("navLinks");
+  const icon = toggleBtn.querySelector("i");
+  const links = navLinks.querySelectorAll("a");
 
+  // Toggle the menu when clicking the hamburger icon
+  toggleBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    
+    // Switch the icon between Hamburger (bars) and X (times)
+    if (navLinks.classList.contains("active")) {
+      icon.classList.remove("fa-bars");
+      icon.classList.add("fa-times");
+    } else {
+      icon.classList.remove("fa-times");
+      icon.classList.add("fa-bars");
+    }
+  });
+
+  // Automatically close the sidebar when a link is clicked
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      icon.classList.remove("fa-times");
+      icon.classList.add("fa-bars");
+    });
+  });
+}
 (function init() {
   const data = window.SITE_DATA;
 
@@ -232,4 +260,6 @@ function setupProjectFilters(data) {
   renderProjects(data);
   renderLinks(data);
   setupProjectFilters(data);
+  setupMobileMenu(); 
+
 })();

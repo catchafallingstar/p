@@ -53,11 +53,20 @@ function renderExperience(data) {
 
 function projectCard(p) {
   const box = el("div", { class: "project-card" });
-  
-  // Placeholder for an image (like in the screenshots)
-  // If you add { image: "assets/proj1.jpg" } to data.js, you can swap this placeholder!
-  const imgPlaceholder = el("div", { class: "project-img-placeholder" });
-  box.appendChild(imgPlaceholder);
+
+  // Check if an image is provided in data.js
+  if (p.image) {
+    const img = el("img", {
+      src: p.image,
+      alt: p.name,
+      class: "project-img"
+    });
+    box.appendChild(img);
+  } else {
+    // Fallback to placeholder if no image exists
+    const imgPlaceholder = el("div", { class: "project-img-placeholder" });
+    box.appendChild(imgPlaceholder);
+  }
 
   box.appendChild(el("div", { class: "item-title", text: p.name }));
   box.appendChild(el("div", { style: "font-size: 0.9rem; color: var(--muted); margin-bottom: 15px;", text: p.description }));
@@ -93,10 +102,10 @@ function renderLinks(data) {
     if (l.icon) {
       // Create the Icon
       const iconEl = el("i", { class: l.icon });
-      
+
       // Wrap it in the <a> tag
       const a = el("a", { class: "btn icon-link", href: l.url, target: "_blank", rel: "noreferrer", title: l.label }, [iconEl]);
-      
+
       wrap.appendChild(a);
     } else {
       // Fallback: If you forgot to add an icon, it just draws text like before
@@ -134,7 +143,7 @@ function setupProjectFilters(data) {
   });
 
   function buildFilterRow(title, tagsSet) {
-    if (tagsSet.size === 0) return; 
+    if (tagsSet.size === 0) return;
 
     const group = el("div", { class: "filter-group", style: "margin-bottom: 15px;" });
     group.appendChild(el("div", { class: "filter-label", text: title, style: "font-size: 0.8rem; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;" }));
@@ -148,8 +157,8 @@ function setupProjectFilters(data) {
       btn.addEventListener("click", () => {
         // Remove active styling from all buttons
         document.querySelectorAll(".filter-btn-wrap .btn").forEach(b => {
-            b.style.borderColor = "var(--border)";
-            b.style.color = "var(--text)";
+          b.style.borderColor = "var(--border)";
+          b.style.color = "var(--text)";
         });
         // Add active styling to clicked button (UMich Maize)
         btn.style.borderColor = "var(--maize)";
@@ -170,23 +179,23 @@ function setupProjectFilters(data) {
 
   filtersWrap.innerHTML = "";
 
-  const resetGroup = el("div", { class: "filter-group", style: "margin-bottom: 15px;"});
+  const resetGroup = el("div", { class: "filter-group", style: "margin-bottom: 15px;" });
   const resetBtn = el("button", { class: "btn secondary-btn", text: "All Projects", style: "padding: 6px 12px; font-size: 0.8rem; border-color: var(--maize); color: var(--maize);" });
-  
+
   resetBtn.addEventListener("click", () => {
     document.querySelectorAll(".filter-btn-wrap .btn").forEach(b => {
-        b.style.borderColor = "var(--border)";
-        b.style.color = "var(--text)";
+      b.style.borderColor = "var(--border)";
+      b.style.color = "var(--text)";
     });
     resetBtn.style.borderColor = "var(--maize)";
     resetBtn.style.color = "var(--maize)";
-    
+
     filterToggle.textContent = `Filter: All ▾`;
     filtersWrap.classList.add("hidden");
     currentCategory = "All Projects";
     renderFilteredProjects();
   });
-  
+
   resetGroup.appendChild(resetBtn);
   filtersWrap.appendChild(resetGroup);
 
@@ -212,7 +221,7 @@ function setupProjectFilters(data) {
     // Make sure it uses the new card layout function
     filtered.forEach(p => projectsWrap.appendChild(projectCard(p)));
   }
-  
+
   // Call it once to render projects initially based on default "All Projects"
   renderFilteredProjects();
 }
@@ -225,7 +234,7 @@ function setupMobileMenu() {
   // Toggle the menu when clicking the hamburger icon
   toggleBtn.addEventListener("click", () => {
     navLinks.classList.toggle("active");
-    
+
     // Switch the icon between Hamburger (bars) and X (times)
     if (navLinks.classList.contains("active")) {
       icon.classList.remove("fa-bars");
@@ -260,6 +269,6 @@ function setupMobileMenu() {
   renderProjects(data);
   renderLinks(data);
   setupProjectFilters(data);
-  setupMobileMenu(); 
+  setupMobileMenu();
 
 })();

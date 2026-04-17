@@ -70,7 +70,7 @@ window.SITE_DATA = {
 
   projects: [
     {
-      image: "assets/ESTIR.jpg", // Optional: add an image for the project card (make sure to put the image in the assets folder!)
+      image: "assets/ESTIR.png", // Optional: add an image for the project card (make sure to put the image in the assets folder!)
       name: "ECS Electrochemistry Knowledge Base Web Redesign & Migration",
       tags: ["Web Development", "Accessibility", "Python", "HTML/CSS/JS"],
       links: [{ label: "GitHub", url: "https://patrickyang23.github.io/ESTIR-Web-Design/" }],

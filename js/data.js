@@ -77,6 +77,7 @@ window.SITE_DATA = {
       description: "Redesigned an electrochemistry research website using HTML/CSS/JS for improved accessibility, and automated the migration of 1,000+ legacy pages using Python."
     },
     {
+      image: "assets/lolda.png",
       name: "League of Legends Data Analysis",
       tags: ["Database", "Machine Learning", "Python"],
       links: [{ label: "GitHub", url: "https://github.com/Catchafallingstar/..." }],
@@ -84,6 +85,7 @@ window.SITE_DATA = {
     },
 
     {
+      image: "assets/img_classification.png",
       name: "CIFAR-10 Image Classification Models", // deep learning project, NN, image classification
       tags: ["Machine Learning", "Python"],
       links: [],// [{ label: "GitHub", url: "https://github.com/..." }], // Link to a repo if you upload your code!

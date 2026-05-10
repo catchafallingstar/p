@@ -6,7 +6,7 @@ window.SITE_DATA = {
 
   links: [
     {
-      label: "GitHub",
+      label: "GitHub Profile",
       url: "https://github.com/catchafallingstar",
       icon: "fab fa-github" // 
     },

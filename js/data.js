@@ -111,28 +111,28 @@ window.SITE_DATA = {
       description: "Designed and trained Convolutional Neural Networks (CNN) and Fully Connected Networks in Python to classify CIFAR-10 images. Conducted hyperparameter tuning on learning rates and activation functions (ReLU/Sigmoid) to optimize test accuracy."
     },
     {
-      image: "",
+      image: "assets/rein.png",
       name: "Reinforcement Learning Agents",
       tags: ["Machine Learning", "Python", "AI & Systems"],
       links: [], // [{ label: "GitHub", url: "https://github.com/..." }],
       description: "Developed Reinforcement Learning agents using Q-Learning and Active Adaptive Dynamic Programming (ADP) to navigate and maximize rewards in highly stochastic environments."
     },
     {
-      image: "",
+      image: "assets/coverage.png",
       name: "Software Coverage Analysis",
       tags: ["Automated Testing", "Python", "C++", "Java", "Linux"],
       links: [], // Leave empty if you cannot post class code to GitHub!
       description: "Designed high-coverage test suites for massive legacy codebases (385,000+ lines of code) including libpng and JFreeChart. Utilized white-box and black-box methodologies, and tools like gcov and cobertura, to maximize statement and branch coverage across C, Java, and Python environments."
     },
     {
-      image: "",
+      image: "assets/mutation.png",
       name: "Mutation Testing & Automated Fuzzing Suite",
       tags: ["Automated Testing", "Python", "C++", "Java"],
       links: [],
       description: "Developed a custom Python testing framework utilizing Abstract Syntax Trees (AST) to perform mutation testing and evaluate test suite adequacy. Additionally, orchestrated industry-standard fuzzing tools like American Fuzzy Lop (AFL) and Randoop to automatically discover edge-case vulnerabilities in C++ and Java codebases."
     },
     {
-      image: "",
+      image: "assets/fa.png",
       name: "Algorithmic Debugging & Fault Localization",
       tags: ["Automated Testing", "Python", "AI & Systems"],
       links: [],

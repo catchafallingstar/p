@@ -619,3 +619,6 @@ a:hover {
     gap: 10px;
   }
 }
+#about {
+  white-space: pre-line;
+}

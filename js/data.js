@@ -97,7 +97,7 @@ window.SITE_DATA = {
       description: "Engineered a C++ in-memory database to parse and execute custom SQL queries. Reduced data retrieval time complexity using dynamic Hash and BST indexing, and developed comprehensive edge-case test suites to validate performance and ensure zero memory leaks."
     },
     {
-      image: "",
+      image: "assets/eec280Euchure.png",
       name: "Euchre Game Simulation",
       tags: ["C++", ],
       links: [],

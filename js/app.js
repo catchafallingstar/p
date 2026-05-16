@@ -58,7 +58,7 @@ function projectCard(p) {
   if (p.image) {
     const img = el("img", {
       src: p.image,
-      alt: p.name,
+      alt: "cover image of " + p.name,
       class: "project-img"
     });
     box.appendChild(img);
@@ -77,14 +77,29 @@ function projectCard(p) {
     box.appendChild(tagWrap);
   }
 
+ // --- UPDATED LINK RENDERING LOGIC ---
   const links = el("div", { class: "chips-wrap", style: "margin-top: 15px;" });
-  (p.links || []).forEach((l) => {
-    links.appendChild(el("a", { href: l.url, target: "_blank", rel: "noreferrer", text: "🔗 " + l.label }));
-  });
+  
+  // Check if there are links in the array
+  if (p.links && p.links.length > 0) {
+    p.links.forEach((l) => {
+      links.appendChild(el("a", { href: l.url, target: "_blank", rel: "noreferrer", text: "🔗 " + l.label }));
+    });
+  } else {
+    // If no links exist, show the Academic Honesty fallback message
+    const privateSpan = el("span", { 
+      style: "font-size: 0.85rem; color: var(--muted); font-style: Regular;", 
+      text: " Code Private (Available upon request)" 
+    });
+    links.appendChild(privateSpan);
+  }
+  
   box.appendChild(links);
+  // ------------------------------------
 
   return box;
 }
+
 
 function renderProjects(data) {
   const wrap = $("projects");
@@ -233,7 +248,14 @@ function setupMobileMenu() {
 
   // Toggle the menu when clicking the hamburger icon
   toggleBtn.addEventListener("click", () => {
+    const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
+    
+    // Toggle the visual menu
     navLinks.classList.toggle("active");
+
+    // Toggle ARIA attributes for screen readers
+    toggleBtn.setAttribute("aria-expanded", !isExpanded);
+    toggleBtn.setAttribute("aria-label", !isExpanded ? "Close navigation menu" : "Open navigation menu");
 
     // Switch the icon between Hamburger (bars) and X (times)
     if (navLinks.classList.contains("active")) {
@@ -251,9 +273,14 @@ function setupMobileMenu() {
       navLinks.classList.remove("active");
       icon.classList.remove("fa-times");
       icon.classList.add("fa-bars");
+      
+      // Reset ARIA attributes when a link closes the menu
+      toggleBtn.setAttribute("aria-expanded", "false");
+      toggleBtn.setAttribute("aria-label", "Open navigation menu");
     });
   });
 }
+
 (function init() {
   const data = window.SITE_DATA;
 

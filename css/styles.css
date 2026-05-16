@@ -1,13 +1,13 @@
 :root {
   /* UMich Dark Theme Colors */
   --bg: #020813;
-  /* Very deep navy/black */
   --card: #001A33;
-  /* Dark UMich Blue variant */
   --text: #e9eef6;
-  --muted: #8a9bb2;
+
+  /* UPDATED: Lightened from #8a9bb2 to pass WCAG AAA */
+  --muted: #aabcdc;
+
   --border: #00274C;
-  /* Official UMich Blue */
 
   /* Neon UMich Accents */
   --maize: #FFCB05;
@@ -326,6 +326,8 @@ a:hover {
 }
 
 .project-card {
+  display: flex;
+  flex-direction: column;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -532,45 +534,45 @@ a:hover {
 .project-img {
   width: 100%;
   height: 160px;
-  object-fit: cover; /* Keeps the image from stretching */
+  object-fit: cover;
+  /* Keeps the image from stretching */
   border-radius: 16px;
   margin-bottom: 15px;
   border: 1px solid var(--border);
 }
+
 /* Mobile Responsiveness (Stacks them on small screens) */
 @media (max-width: 768px) {
   .mobile-toggle {
     display: block;
     /* Show the hamburger icon */
   }
+
   .logo {
     display: none;
   }
+
   .nav-links {
     position: fixed;
     top: 0;
-    right: -280px;
-    /* Hide it off-screen to the right by default */
+    left: -280px;
     width: 280px;
     height: 100vh;
     background: rgba(2, 8, 19, 0.98);
-    /* Deep UMich dark background */
     backdrop-filter: blur(15px);
     border-left: 1px solid var(--border);
     flex-direction: column;
-    justify-content: center;
-    /* Center links vertically */
+    justify-content: start;
     align-items: center;
     gap: 40px;
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Smooth sliding animation */
+    
+    /* ADD THIS: Pushes everything down from the top of the screen */
+    padding-top: 100px; 
+    
+    /* ALSO FIX THIS: Change 'right' to 'left' so the slide animation works! */
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    
     z-index: 1000;
-  }
-
-  /* When the JavaScript adds this class, it slides in! */
-  .nav-links.active {
-    right: 0;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
   }
 
   .nav-links li {
@@ -578,13 +580,20 @@ a:hover {
     text-align: center;
   }
 
+
   .nav-links a {
     display: block;
     font-size: 1.2rem;
     padding: 10px;
   }
+   
+  .nav-links.active {
+    /* CHANGE 4: Slide to the left edge */
+    left: 0;
+    /* CHANGE 5: Flip the shadow direction from -10px to 10px so it casts to the right */
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.8);
+  }
 
-  
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
@@ -619,6 +628,24 @@ a:hover {
     gap: 10px;
   }
 }
+
 #about {
   white-space: pre-line;
+}
+
+/* --- Accessibility: Keyboard Focus States --- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.mobile-toggle:focus-visible {
+  outline: 3px solid var(--maize);
+  outline-offset: 4px;
+  border-radius: 4px;
+  /* Softens the corners of the focus ring */
+}
+
+/* Specific adjustment for your circular/icon social links so the ring fits nicely */
+#links a.icon-link:focus-visible {
+  border-radius: 8px;
 }

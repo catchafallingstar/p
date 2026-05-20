@@ -99,14 +99,14 @@ window.SITE_DATA = {
     {
       image: "assets/eecs281p3.png",
       name: "Relational Database Engine",
-      tags: ["C++"],
+      tags: ["Linux","C++"],
       links: [], // Add a GitHub link here later if you make the repo public!
       description: "Engineered a C++ in-memory database to parse and execute custom SQL queries. Reduced data retrieval time complexity using dynamic Hash and BST indexing, and developed comprehensive edge-case test suites to validate performance and ensure zero memory leaks."
     },
     {
       image: "assets/eec280Euchure.png",
       name: "Euchre Game Simulation",
-      tags: ["C++",],
+      tags: ["C++","Linux"],
       links: [],
       description: "Developed a card game simulation utilizing Abstract Data Types (ADTs) and overloaded operators to evaluate complex, context-dependent card hierarchies. Validated core game state logic via targeted unit tests using a custom C++ testing framework."
     },
@@ -127,14 +127,14 @@ window.SITE_DATA = {
     {
       image: "assets/coverage.png",
       name: "Software Coverage Analysis",
-      tags: ["Automated Testing", "Python", "C++", "Java", "Linux","AWS"],
+      tags: ["Automated Testing", "Python", "C++", "Java","AWS"],
       links: [], // Leave empty if you cannot post class code to GitHub!
       description: "Designed high-coverage test suites for massive legacy codebases (385,000+ lines of code) including libpng and JFreeChart. Utilized white-box and black-box methodologies, and tools like gcov and cobertura, to maximize statement and branch coverage across C, Java, and Python environments."
     },
     {
       image: "assets/mutation.png",
       name: "Mutation Testing & Automated Fuzzing Suite",
-      tags: ["Automated Testing", "Python", "C++", "Java", "AWS"],
+      tags: ["Automated Testing", "Python", "C++", "Java",  "AWS"],
       links: [],
       description: "Developed a custom Python testing framework utilizing Abstract Syntax Trees (AST) to perform mutation testing and evaluate test suite adequacy. Additionally, orchestrated industry-standard fuzzing tools like American Fuzzy Lop (AFL) and Randoop to automatically discover edge-case vulnerabilities in C++ and Java codebases."
     },

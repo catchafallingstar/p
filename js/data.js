@@ -127,21 +127,21 @@ window.SITE_DATA = {
     {
       image: "assets/coverage.png",
       name: "Software Coverage Analysis",
-      tags: ["Automated Testing", "Python", "C++", "Java", "Linux"],
+      tags: ["Automated Testing", "Python", "C++", "Java", "Linux","AWS"],
       links: [], // Leave empty if you cannot post class code to GitHub!
       description: "Designed high-coverage test suites for massive legacy codebases (385,000+ lines of code) including libpng and JFreeChart. Utilized white-box and black-box methodologies, and tools like gcov and cobertura, to maximize statement and branch coverage across C, Java, and Python environments."
     },
     {
       image: "assets/mutation.png",
       name: "Mutation Testing & Automated Fuzzing Suite",
-      tags: ["Automated Testing", "Python", "C++", "Java"],
+      tags: ["Automated Testing", "Python", "C++", "Java", "AWS"],
       links: [],
       description: "Developed a custom Python testing framework utilizing Abstract Syntax Trees (AST) to perform mutation testing and evaluate test suite adequacy. Additionally, orchestrated industry-standard fuzzing tools like American Fuzzy Lop (AFL) and Randoop to automatically discover edge-case vulnerabilities in C++ and Java codebases."
     },
     {
       image: "assets/fa.png",
       name: "Algorithmic Debugging & Fault Localization",
-      tags: ["Automated Testing", "Python", "AI & Systems"],
+      tags: ["Automated Testing", "Python", "AI & Systems","AWS"],
       links: [],
       description: "Engineered automated debugging algorithms in Python to accelerate software maintenance. Implemented Delta Debugging to programmatically minimize complex failing inputs, and built a Coverage-Based Fault Localization tool to mathematically isolate defective code lines using test execution traces."
     },

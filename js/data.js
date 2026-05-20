@@ -38,7 +38,7 @@ window.SITE_DATA = {
   education: [
     {
       school: "University of Michigan - Ann Arbor",
-      degree: "B.S.E. in Computer Science Engineering",
+      degree: "B.S.E. in Computer Science, Minor in UX Design",
       years: "Aug 2023 – May 2027",
       details: "Relevant coursework: Data Structures & Algorithms, Computer Systems, Introduction to Artificial Intelligence, Database Systems, Software Testing & Automation"
     }

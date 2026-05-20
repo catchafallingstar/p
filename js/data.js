@@ -76,6 +76,13 @@ window.SITE_DATA = {
 
   projects: [
     {
+      image: "assets/market.png", // Take a screenshot of the working app!
+      name: "Full-Stack Django Marketplace",
+      tags: ["Python", "Django", "Web Development", "Databases"],
+      links: [{ label: "GitHub", url: "https://github.com/catchafallingstar/your-repo-name" }],
+      description: "Built a dynamic marketplace application using Django 5.2 and PythonAnywhere. Architected custom Django Models, Views, and Forms to manage dynamic content and batch data loading. Implemented full CRUD functionality with user authentication, allowing users to manage owned rows, upload pictures, post comments, and utilize marketplace search and favorite features."
+    },
+    {
       image: "assets/ESTIR.png", // Optional: add an image for the project card (make sure to put the image in the assets folder!)
       name: "ECS Electrochemistry Knowledge Base Web Redesign & Migration",
       tags: ["Web Development", "Accessibility", "Python", "HTML/CSS/JS"],
@@ -85,21 +92,21 @@ window.SITE_DATA = {
     {
       image: "assets/lolda.png",
       name: "League of Legends Data Analysis",
-      tags: [ "Python"],
+      tags: ["Python"],
       links: [],//{ label: "GitHub", url: "https://github.com/Catchafallingstar/..." }
       description: "Analyzed over 10,000 professional match datasets using Python and Pandas to identify gameplay meta trends and team composition correlations."
     },
     {
       image: "assets/eecs281p3.png",
       name: "Relational Database Engine",
-      tags: [ "C++" ],
+      tags: ["C++"],
       links: [], // Add a GitHub link here later if you make the repo public!
       description: "Engineered a C++ in-memory database to parse and execute custom SQL queries. Reduced data retrieval time complexity using dynamic Hash and BST indexing, and developed comprehensive edge-case test suites to validate performance and ensure zero memory leaks."
     },
     {
       image: "assets/eec280Euchure.png",
       name: "Euchre Game Simulation",
-      tags: ["C++", ],
+      tags: ["C++",],
       links: [],
       description: "Developed a card game simulation utilizing Abstract Data Types (ADTs) and overloaded operators to evaluate complex, context-dependent card hierarchies. Validated core game state logic via targeted unit tests using a custom C++ testing framework."
     },

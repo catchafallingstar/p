@@ -90,6 +90,13 @@ window.SITE_DATA = {
       description: "Redesigned an electrochemistry research website using HTML/CSS/JS for improved accessibility, and automated the migration of 1,000+ legacy pages using Python."
     },
     {
+      image: "assets/db.png",
+      name: "Social Media Database System",
+      tags: ["Java", "SQL"],
+      links: [], // Add a GitHub link here later if you make the repo public!
+      description: "Architected a relational database and engineered a Java/JDBC backend application. Executed data ingestion via complex SQL scripts to ensure data integrity during legacy migrations using DDL constraints, and optimized queries for efficient large-scale data retrieval."
+    },
+    {
       image: "assets/lolda.png",
       name: "League of Legends Data Analysis",
       tags: ["Python"],

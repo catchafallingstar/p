@@ -139,7 +139,7 @@ function setupProjectFilters(data) {
   let currentCategory = "All Projects";
 
   const knownRoles = ["Machine Learning", "Automated Testing", "Web Development", "Accessibility", "Database", "AI & Systems", "Django", "AWS"];
-  const knownLanguages = ["Python", "C++", "SQL", "JavaScript", "HTML/CSS/JS"];
+  const knownLanguages = ["Python", "C++", "SQL", "JavaScript","HTML/CSS/JS","Java" ];
 
   filterToggle.addEventListener("click", () => {
     filtersWrap.classList.toggle("hidden");

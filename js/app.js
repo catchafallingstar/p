@@ -52,7 +52,7 @@ function renderExperience(data) {
 }
 
 function projectCard(p) {
-  const box = el("div", { class: "project-card" });
+  const box = el("div", { class: "project-card", });
 
   if (p.image) {
     const img = el("img", { src: p.image, alt: "cover image of " + p.name, class: "project-img" });

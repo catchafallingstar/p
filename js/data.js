@@ -79,7 +79,7 @@ window.SITE_DATA = {
       image: "assets/market.png", // Take a screenshot of the working app!
       name: "Full-Stack Django Marketplace",
       tags: ["Python", "Django", "Web Development", "Database"],
-      links: [{ label: "GitHub", url: "https://github.com/catchafallingstar/your-repo-name" }],
+      links: [{ label: "GitHub", url: "https://catchafallingstar.pythonanywhere.com/" }],
       description: "Built a dynamic marketplace application using Django 5.2 and PythonAnywhere. Architected custom Django Models, Views, and Forms to manage dynamic content and batch data loading. Implemented full CRUD functionality with user authentication, allowing users to manage owned rows, upload pictures, post comments, and utilize marketplace search and favorite features."
     },
     {

@@ -219,19 +219,18 @@ a:hover {
 }
 
 /* --- Social Link Icon Sizing --- */
+#links {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: start;
+}
 #links a.icon-link {
   font-size: 2.2rem;
-  /* <-- Change this number to make them bigger or smaller */
   color: var(--muted);
   transition: all 0.2s ease;
-  border: none;
-  /* Removes any default button borders */
-  background: transparent;
-  /* Removes any default button background */
-  padding: 0 30px;
-  /* Gives them a little breathing room side-to-side */
+  padding: 0; /* Clear the excessive padding */
 }
-
 /* Optional: Make them glow UMich Maize when you hover over them */
 #links a.icon-link:hover {
   color: var(--maize);
@@ -540,7 +539,27 @@ a:hover {
   margin-bottom: 15px;
   border: 1px solid var(--border);
 }
+/* Footer Styling */
+.footer {
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 60px;
+}
 
+/* Section Green/Blue Ambient Glow */
+/* .glow-green {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(69, 162, 255, 0.06) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  pointer-events: none;
+  z-index: -1;
+} */
 /* Mobile Responsiveness (Stacks them on small screens) */
 @media (max-width: 768px) {
   .mobile-toggle {
@@ -648,4 +667,57 @@ textarea:focus-visible,
 /* Specific adjustment for your circular/icon social links so the ring fits nicely */
 #links a.icon-link:focus-visible {
   border-radius: 8px;
+}
+/* =========================================
+   NEW: Accessibility Mode (Dyslexia Friendly)
+   ========================================= */
+body.dyslexia-mode {
+  /* Falls back to Comic Sans which is naturally high-readability for dyslexia */
+  font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+  letter-spacing: 0.1em;
+  word-spacing: 0.15em;
+  line-height: 2;
+}
+
+/* =========================================
+   NEW: Smooth Filtering Animations
+   ========================================= */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hide elements entirely from layout when filtered out */
+.project-card.hidden-card {
+  display: none;
+}
+
+/* When displayed, animate them scaling up and fading in */
+.project-card.fade-in {
+  animation: fadeInScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.90);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================================
+   NEW: Project Card Empty State Placholder
+   ========================================= */
+.project-img-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  background: linear-gradient(45deg, var(--bg), #001f3f); /* Dark gradient */
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  margin-bottom: 15px;
 }

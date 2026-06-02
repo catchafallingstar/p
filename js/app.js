@@ -290,7 +290,23 @@ function setupMobileMenu() {
     });
   });
 }
+function setupScrollAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        // Optional: Stop observing once revealed
+        // observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.1 });
 
+  // Add the 'reveal' class to sections, cards, and titles in your HTML or JS
+  document.querySelectorAll('.section, .project-card, .item').forEach((el) => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+}
 (function init() {
   const data = window.SITE_DATA;
 
@@ -308,4 +324,5 @@ function setupMobileMenu() {
   setupProjectFilters(data); // Attaches animations and logic to those elements
   setupMobileMenu();
   setupA11y(); // Initialize Accessibility toggle
+  setupScrollAnimations()
 })();

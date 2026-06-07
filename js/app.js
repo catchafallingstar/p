@@ -209,11 +209,10 @@ function setupProjectFilters(data) {
 
   function renderFilteredProjects() {
     data.projects.forEach(p => {
-      const matchesCategory = currentCategory === "All Projects" || (p.tags && p.tags.includes(currentCategory));
+      const matchesCategory = currentCategory === "All Projects" || (p.tags && p.tags.some(tag => tag.toLowerCase() === currentCategory.toLowerCase()));
       const searchString = (p.name + " " + (p.description || "") + " " + (p.tags || []).join(" ")).toLowerCase();
       const matchesSearch = !currentSearch || searchString.includes(currentSearch);
 
-      // NEW: Smoothly toggle classes instead of erasing the HTML
       if (matchesCategory && matchesSearch) {
         p.domNode.classList.remove("hidden-card");
         void p.domNode.offsetWidth; // Triggers browser reflow to restart animation
@@ -223,6 +222,22 @@ function setupProjectFilters(data) {
         p.domNode.classList.remove("fade-in");
       }
     });
+
+    const noResultsMessage = $("noProjectResults");
+    const projectsContainer = $("projects");
+    // Instead of filtering the original data.projects array, filter the DOM nodes
+    const visibleProjects = Array.from(projectsContainer.children).filter(node => !node.classList.contains("hidden-card"));
+
+    if (visibleProjects.length === 0 && !noResultsMessage) {
+      const message = el("div", { 
+        id: "noProjectResults",
+        text: "No projects found matching your criteria.", 
+        style: "text-align: center; color: var(--muted); margin-top: 40px; font-size: 1.1rem;"
+      });
+      projectsContainer.appendChild(message);
+    } else if (visibleProjects.length > 0 && noResultsMessage) {
+      noResultsMessage.remove();
+    }
   }
 
   renderFilteredProjects();
@@ -305,6 +320,16 @@ function setupScrollAnimations() {
   document.querySelectorAll('.section, .project-card, .item').forEach((el) => {
     el.classList.add('reveal');
     observer.observe(el);
+  });
+
+  // Smooth scroll progress bar logic
+  window.addEventListener('scroll', () => {
+    const bar = $('scrollProgress');
+    if (!bar) return;
+    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+    bar.style.width = scrolled + '%';
   });
 }
 (function init() {

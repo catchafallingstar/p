@@ -117,68 +117,160 @@ a:hover {
   color: var(--maize);
 }
 
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(to right, var(--neon-blue), var(--maize));
+  transition: width 0.1s ease;
+  z-index: 101;
+}
+
 /* Hero Section */
 #home {
-
   align-items: center;
   position: relative;
-
 }
 
 .hero {
   display: grid;
-  grid-template-columns: 1.2fr auto;
-  /* Gives the text slightly more room than the image */
+  grid-template-columns: 1.3fr 1fr;
   align-items: center;
-  gap: 60px;
-  padding-top: 90px;
+  gap: 40px;
+  padding-top: 110px;
+  padding-bottom: 60px;
+  min-height: 100vh; /* Ensure hero takes full viewport height */
+  overflow: hidden; /* Prevent overflow from animations */
 }
 
-/* Right Side Image Container */
+/* Right Side Image Container with perspective */
 .hero-image-right {
   display: flex;
-  justify-content: flex-end;
-  /* Pushes the image to the right edge */
+  justify-content: center;
   align-items: center;
   position: relative;
+  perspective: 1200px;
+  animation: hero-image-appear 1.2s ease-out 0.6s forwards; /* Delay for content to appear first */
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
 }
 
-/* The Portrait Image Styling (Like Akash's) */
+@keyframes hero-image-appear {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hero-portrait-frame {
+  position: relative;
+  padding: 8px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--maize) 0%, var(--neon-blue) 100%);
+  box-shadow: 0 20px 50px rgba(0, 39, 76, 0.5), 0 0 30px rgba(255, 203, 5, 0.15);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-portrait-frame::before {
+  content: \'\';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border-radius: 26px;
+  background: linear-gradient(45deg, var(--neon-maize), transparent, var(--neon-blue), transparent);
+  z-index: -1;
+  background-size: 400% 400%;
+  animation: borderGlow 8s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .hero-portrait {
   width: 100%;
-  max-width: 380px;
-  /* Controls how large the image gets */
+  max-width: 300px; /* Reduced from 380px to look elegant and well-balanced */
   height: auto;
   aspect-ratio: 4/5;
-  /* Gives it a nice vertical portrait shape */
   object-fit: cover;
-  border-radius: 24px;
-  /* Soft rounded corners instead of a full circle */
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 40px rgba(0, 39, 76, 0.4);
-  /* Subtle UMich Blue drop shadow */
-  z-index: 2;
+  border-radius: 18px;
+  display: block;
+  transition: transform 0.5s ease;
 }
 
-/* Optional: Adds a subtle blue/maize glow behind the image */
+/* Elegant geometric accent behind image */
+.hero-image-right::after {
+  content: \'\';
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  width: 140px;
+  height: 140px;
+  background-image: radial-gradient(var(--maize) 1.5px, transparent 1.5px);
+  background-size: 15px 15px;
+  opacity: 0.25;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Glow behind image */
 .hero-image-right::before {
-  content: '';
+  content: \'\';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
-  height: 90%;
-  background: radial-gradient(circle, rgba(69, 162, 255, 0.1) 0%, transparent 70%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(69, 162, 255, 0.15) 0%, transparent 70%);
   filter: blur(40px);
   z-index: 1;
 }
 
+/* Hover effects */
+.hero-image-right:hover .hero-portrait-frame {
+  transform: translateY(-8px) rotateY(-4px) rotateX(4px);
+  box-shadow: 0 30px 60px rgba(0, 39, 76, 0.6), 0 0 45px rgba(255, 203, 5, 0.25);
+}
+
+.hero-image-right:hover .hero-portrait {
+  transform: scale(1.02);
+}
 
 .hero h1 {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   line-height: 1.1;
   margin: 0 0 20px 0;
+  animation: text-slide-up 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-content h2 {
+  animation: text-slide-up 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-content p#about {
+  animation: text-slide-up 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-content .social-links {
+  animation: text-slide-up 0.8s ease-out 0.5s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes text-slide-up {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* New UMich Gradients */
@@ -509,12 +601,104 @@ a:hover {
   color: var(--maize);
 }
 
+/* --- High-end Timeline Design --- */
+.timeline {
+  position: relative;
+  padding-left: 35px;
+  border-left: 2px solid var(--border);
+  margin-top: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--neon-blue), var(--maize));
+}
+
 .timeline .item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 15px;
+  position: relative;
+  background: rgba(0, 26, 51, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+/* Timeline dot */
+.timeline .item::before {
+  content: '';
+  position: absolute;
+  left: -46px; /* Center-aligned with the border-left line */
+  top: 28px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--neon-blue);
+  box-shadow: 0 0 10px rgba(69, 162, 255, 0.5);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.timeline .item:hover::before {
+  border-color: var(--maize);
+  background: var(--maize);
+  box-shadow: 0 0 15px rgba(255, 203, 5, 0.8);
+  transform: scale(1.2);
+}
+
+.timeline .item:hover {
+  transform: translateX(6px) translateY(-4px);
+  border-color: rgba(255, 203, 5, 0.35);
+  box-shadow: 0 15px 40px rgba(255, 203, 5, 0.12);
+  background: rgba(0, 26, 51, 0.55);
+}
+
+.timeline .bullets {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+.timeline .bullets li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.timeline .bullets li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--maize);
+  font-size: 0.8rem;
+}
+
+.education-wrap .item {
+  background: rgba(0, 26, 51, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px;
+  border-radius: 16px;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+.education-wrap .item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 203, 5, 0.35);
+  box-shadow: 0 15px 40px rgba(255, 203, 5, 0.12);
+  background: rgba(0, 26, 51, 0.55);
 }
 
 .search {
@@ -721,19 +905,26 @@ body.dyslexia-mode {
   grid-auto-flow: dense; /* Crucial for Bento layouts */
 }
 
-/* Add an empty div with class 'bg-mesh' to the top of your body */
+/* Elegant dynamic background with glowing drifting orbs and finer grid lines */
 .bg-mesh {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: -2;
-  background: radial-gradient(circle at 15% 50%, rgba(69, 162, 255, 0.08), transparent 50%),
-              radial-gradient(circle at 85% 30%, rgba(255, 203, 5, 0.05), transparent 50%);
-  animation: mesh-drift 15s infinite alternate ease-in-out;
+  background: 
+    radial-gradient(circle at 15% 25%, rgba(69, 162, 255, 0.12), transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(255, 203, 5, 0.08), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(0, 39, 76, 0.15), transparent 50%);
+  filter: blur(60px);
+  animation: mesh-drift 20s infinite alternate ease-in-out;
 }
 
 @keyframes mesh-drift {
-  0% { transform: scale(1) translate(0, 0); }
-  100% { transform: scale(1.1) translate(-30px, 20px); }
+  0% { 
+    transform: scale(1) translate(0, 0); 
+  }
+  100% { 
+    transform: scale(1.15) translate(-40px, 30px); 
+  }
 }
 
 @media (max-width: 768px) {
@@ -766,4 +957,13 @@ body.dyslexia-mode {
   border: 1px dashed var(--border);
   border-radius: 8px;
   margin-bottom: 15px;
+}
+/* Hides the projects that don't match the search/filter */
+.hidden-card {
+  display: none !important;
+}
+
+/* Connects to your existing fadeInScale animation for smooth filtering */
+.fade-in {
+  animation: fadeInScale 0.4s ease forwards;
 }

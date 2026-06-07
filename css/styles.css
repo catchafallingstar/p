@@ -139,11 +139,11 @@ a:hover {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
   align-items: center;
-  gap: 40px;
-  padding-top: 110px;
-  padding-bottom: 60px;
+  gap: 8%;
+  padding: 160px 5% 100px 5%;
   min-height: 100vh;
-  /* Ensure hero takes full viewport height */
+  max-width: 1400px;
+  margin: 0 auto;
   overflow: hidden;
   /* Prevent overflow from animations */
 }
@@ -182,7 +182,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 350px;
+  max-width: 450px;
   /* Keeps the size constrained */
   aspect-ratio: 1 / 1;
   margin: 0 auto;
@@ -318,7 +318,7 @@ a:hover {
   font-family: 'Fira Code', monospace;
   /* Uses your existing code font */
   width: 100%;
-  max-width: 600px;
+  max-width: none;
 }
 
 /* Terminal Header & macOS Buttons */

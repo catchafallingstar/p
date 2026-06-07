@@ -332,14 +332,38 @@ function setupScrollAnimations() {
     bar.style.width = scrolled + '%';
   });
 }
+// Function to create the typing effect
+function typeEffect(elementId, text, speed) {
+  const element = document.getElementById(elementId);
+  if (!element) return;
+  
+  let i = 0;
+  element.innerHTML = ""; // Clear it initially
+  
+  function type() {
+    if (i < text.length) {
+      // Handle line breaks correctly so it formats beautifully
+      if (text.charAt(i) === '\n') {
+        element.innerHTML += '<br>';
+      } else {
+        element.innerHTML += text.charAt(i);
+      }
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  
+  // Start typing after a short delay so the user sees it begin
+  setTimeout(type, 500); 
+}
 (function init() {
   const data = window.SITE_DATA;
 
   $("nav-name").textContent = data.name;
   $("tagline").textContent = data.tagline;
-  $("about").textContent = data.about;
-  $("year").textContent = new Date().getFullYear();
 
+  $("year").textContent = new Date().getFullYear();
+  typeEffect("typed-about", data.about, 25); // NEW: Start the typing effect on page load
   renderContact(data);
   renderSkills(data);
   renderEducation(data);

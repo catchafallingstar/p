@@ -52,13 +52,16 @@ function renderExperience(data) {
 }
 
 function projectCard(p) {
-  const box = el("div", { class: "project-card", });
+  const box = el("article", {
+    class: "project-card project-compact"
+  });
+  const media = el("div", { class: "project-media" });
+  const content = el("div", { class: "project-content" });
 
   if (p.image) {
-    const img = el("img", { src: p.image, alt: "cover image of " + p.name, class: "project-img" });
-    box.appendChild(img);
+    const img = el("img", { src: p.image, alt: "Project preview: " + p.name, class: "project-img" });
+    media.appendChild(img);
   } else {
-    // NEW: Interactive Placeholder for empty states
     const imgPlaceholder = el("div", { class: "project-img-placeholder" });
     const icon = el("i", { class: "fas fa-code", style: "font-size: 3rem; color: var(--border); opacity: 0.6;" });
     const text = el("div", { 
@@ -68,37 +71,63 @@ function projectCard(p) {
     
     imgPlaceholder.appendChild(icon);
     imgPlaceholder.appendChild(text);
-    box.appendChild(imgPlaceholder);
+    media.appendChild(imgPlaceholder);
   }
 
-  box.appendChild(el("div", { class: "item-title", text: p.name }));
-  box.appendChild(el("div", { style: "font-size: 0.9rem; color: var(--muted); margin-bottom: 15px;", text: p.description }));
+  box.appendChild(media);
+
+  const primaryCategory = p.categories?.[0];
+  if (primaryCategory || p.date) {
+    const meta = el("div", { class: "project-meta" });
+    if (primaryCategory) meta.appendChild(el("span", { class: "project-context", text: primaryCategory }));
+    if (p.date) meta.appendChild(el("span", { class: "project-date", text: p.date }));
+    content.appendChild(meta);
+  }
+
+  content.appendChild(el("h3", { class: "item-title", text: p.name }));
+
+  content.appendChild(el("p", { class: "project-description", text: p.description }));
 
   if (p.tags?.length) {
     const tagWrap = el("div", { class: "chips-wrap" });
     p.tags.forEach((t) => tagWrap.appendChild(el("span", { class: "chip", text: t })));
-    box.appendChild(tagWrap);
+    content.appendChild(tagWrap);
   }
 
-  const links = el("div", { class: "chips-wrap", style: "margin-top: 15px;" });
+  const links = el("div", { class: "project-links" });
   if (p.links && p.links.length > 0) {
     p.links.forEach((l) => {
-      links.appendChild(el("a", { href: l.url, target: "_blank", rel: "noreferrer", text: "🔗 " + l.label }));
+      links.appendChild(el("a", { href: l.url, target: "_blank", rel: "noreferrer", text: l.label + " ↗" }));
     });
   } else {
-    const privateSpan = el("span", { style: "font-size: 0.85rem; color: var(--muted);", text: " Code Private (Available upon request)" });
+    const privateSpan = el("span", { class: "project-private", text: "Code private — available upon request" });
     links.appendChild(privateSpan);
   }
-  
-  box.appendChild(links);
+
+  content.appendChild(links);
+  box.appendChild(content);
   return box;
 }
 
 function renderProjects(data) {
   const wrap = $("projects");
   wrap.innerHTML = "";
-  // NEW: Save the DOM element directly to the data object so we can animate it later
-  data.projects.forEach((p) => {
+  const orderedProjects = data.projects
+    .map((project, index) => ({ project, index }))
+    .sort((a, b) => {
+      const aTime = a.project.startDate ? Date.parse(a.project.startDate) : NaN;
+      const bTime = b.project.startDate ? Date.parse(b.project.startDate) : NaN;
+      const aHasDate = Number.isFinite(aTime);
+      const bHasDate = Number.isFinite(bTime);
+
+      if (aHasDate && bHasDate) return bTime - aTime;
+      if (aHasDate) return -1;
+      if (bHasDate) return 1;
+      return a.index - b.index;
+    })
+    .map(({ project }) => project);
+
+  orderedProjects.forEach((p) => {
     p.domNode = projectCard(p);
     wrap.appendChild(p.domNode);
   });
@@ -127,91 +156,130 @@ function renderLinks(data) {
 }
 function setupProjectFilters(data) {
   const searchInput = $("projectSearch");
+  const searchClear = $("projectSearchClear");
   const filterToggle = $("filterToggle");
   const filtersWrap = $("projectFilters");
+  const resultsStatus = $("projectResultsStatus");
 
   let currentSearch = "";
   let currentCategory = "All Projects";
+  const knownDomains = ["Machine Learning", "Automated Testing", "Web Development", "Accessibility", "Database", "Databases", "AI & Systems", "Web Scraping"];
+  const knownTechnologies = ["Python", "C++", "SQL", "JavaScript", "HTML/CSS/JS", "Java", "React", "Vite", "Django", "Streamlit", "PostgreSQL", "AWS", "Linux"];
 
-  // Note: I added Linux and Databases so your filter bugs are fixed too!
-  const knownRoles = ["Machine Learning", "Automated Testing", "Web Development", "Accessibility", "Database", "Databases", "AI & Systems", "Django", "AWS", "Linux"];
-  const knownLanguages = ["Python", "C++", "SQL", "JavaScript", "HTML/CSS/JS", "Java"];
+  const normalizeSearch = (value) => value
+    .toLocaleLowerCase()
+    .trim()
+    .replace(/[–—-]/g, " ")
+    .replace(/[^\p{L}\p{N}+#]+/gu, " ")
+    .replace(/\s+/g, " ");
 
-  filterToggle.addEventListener("click", () => filtersWrap.classList.toggle("hidden"));
-
-  const extractedRoles = new Set();
-  const extractedLanguages = new Set();
-
-  data.projects.forEach(p => {
-    if (p.tags) {
-      p.tags.forEach(tag => {
-        if (knownRoles.includes(tag)) extractedRoles.add(tag);
-        else if (knownLanguages.includes(tag)) extractedLanguages.add(tag);
-      });
-    }
+  filterToggle.addEventListener("click", () => {
+    const isOpening = filtersWrap.classList.contains("hidden");
+    filtersWrap.classList.toggle("hidden");
+    filterToggle.setAttribute("aria-expanded", String(isOpening));
   });
 
-  function buildFilterRow(title, tagsSet) {
-    if (tagsSet.size === 0) return;
-    const group = el("div", { class: "filter-group", style: "margin-bottom: 15px;" });
-    group.appendChild(el("div", { class: "filter-label", text: title, style: "font-size: 0.8rem; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;" }));
-    const btnWrap = el("div", { class: "filter-btn-wrap", style: "display: flex; gap: 8px; flex-wrap: wrap;" });
+  filtersWrap.innerHTML = "";
+  const extractedDomains = new Set();
+  const extractedTechnologies = new Set();
 
-    tagsSet.forEach(tag => {
-      const btn = el("button", { class: "btn secondary-btn", text: tag, style: "padding: 6px 12px; font-size: 0.8rem;" });
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".filter-btn-wrap .btn").forEach(b => {
-          b.style.borderColor = "var(--border)";
-          b.style.color = "var(--text)";
-        });
-        btn.style.borderColor = "var(--maize)";
-        btn.style.color = "var(--maize)";
-
-        filterToggle.textContent = `Filter: ${tag} ▾`;
-        filtersWrap.classList.add("hidden");
-        currentCategory = tag;
-        renderFilteredProjects();
-      });
-      btnWrap.appendChild(btn);
+  data.projects.forEach((project) => {
+    (project.tags || []).forEach((tag) => {
+      if (knownDomains.includes(tag)) extractedDomains.add(tag);
+      else if (knownTechnologies.includes(tag)) extractedTechnologies.add(tag);
     });
-    group.appendChild(btnWrap);
+  });
+
+  function selectFilter(button, value) {
+    currentCategory = value;
+    filtersWrap.querySelectorAll(".project-filter-btn").forEach((candidate) => {
+      const isActive = candidate === button;
+      candidate.classList.toggle("is-active", isActive);
+      candidate.setAttribute("aria-pressed", String(isActive));
+    });
+    filterToggle.textContent = `Filter: ${value === "All Projects" ? "All" : value} ▾`;
+    filterToggle.setAttribute("aria-expanded", "false");
+    filtersWrap.classList.add("hidden");
+    renderFilteredProjects();
+  }
+
+  function buildFilterRow(title, values) {
+    if (values.size === 0) return;
+    const group = el("div", { class: "filter-group" });
+    group.appendChild(el("div", { class: "filter-label", text: title }));
+    const buttonWrap = el("div", { class: "filter-btn-wrap" });
+
+    values.forEach((value) => {
+      const button = el("button", {
+        class: "btn secondary-btn project-filter-btn",
+        type: "button",
+        text: value,
+        "aria-pressed": "false"
+      });
+      button.addEventListener("click", () => selectFilter(button, value));
+      buttonWrap.appendChild(button);
+    });
+
+    group.appendChild(buttonWrap);
     filtersWrap.appendChild(group);
   }
 
-  filtersWrap.innerHTML = "";
-  const resetGroup = el("div", { class: "filter-group", style: "margin-bottom: 15px;" });
-  const resetBtn = el("button", { class: "btn secondary-btn", text: "All Projects", style: "padding: 6px 12px; font-size: 0.8rem; border-color: var(--maize); color: var(--maize);" });
-
-  resetBtn.addEventListener("click", () => {
-    document.querySelectorAll(".filter-btn-wrap .btn").forEach(b => {
-      b.style.borderColor = "var(--border)";
-      b.style.color = "var(--text)";
-    });
-    resetBtn.style.borderColor = "var(--maize)";
-    resetBtn.style.color = "var(--maize)";
-
-    filterToggle.textContent = `Filter: All ▾`;
-    filtersWrap.classList.add("hidden");
-    currentCategory = "All Projects";
-    renderFilteredProjects();
+  const allGroup = el("div", { class: "filter-group" });
+  allGroup.appendChild(el("div", { class: "filter-label", text: "Show" }));
+  const allButtonWrap = el("div", { class: "filter-btn-wrap" });
+  const allButton = el("button", {
+    class: "btn secondary-btn project-filter-btn is-active",
+    type: "button",
+    text: "All Projects",
+    "aria-pressed": "true"
   });
+  allButton.addEventListener("click", () => selectFilter(allButton, "All Projects"));
+  allButtonWrap.appendChild(allButton);
+  allGroup.appendChild(allButtonWrap);
+  filtersWrap.appendChild(allGroup);
 
-  resetGroup.appendChild(resetBtn);
-  filtersWrap.appendChild(resetGroup);
+  buildFilterRow("Domain", extractedDomains);
+  buildFilterRow("Technology", extractedTechnologies);
 
-  buildFilterRow("Domain", extractedRoles);
-  buildFilterRow("Language", extractedLanguages);
-
-  searchInput.addEventListener("input", (e) => {
-    currentSearch = e.target.value.toLowerCase().trim();
+  /*
+   * Search stays independent from the filters, so visitors can combine a
+   * technology/domain filter with words from a project title or description.
+   */
+  const updateSearch = () => {
+    currentSearch = normalizeSearch(searchInput.value);
+    searchClear.classList.toggle("hidden", !currentSearch);
     renderFilteredProjects();
+  };
+
+  searchInput.addEventListener("input", updateSearch);
+  searchInput.addEventListener("search", updateSearch);
+  searchInput.addEventListener("change", updateSearch);
+  searchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      updateSearch();
+    }
+  });
+  searchClear.addEventListener("click", () => {
+    searchInput.value = "";
+    currentSearch = "";
+    searchClear.classList.add("hidden");
+    renderFilteredProjects();
+    searchInput.focus();
   });
 
   function renderFilteredProjects() {
     data.projects.forEach(p => {
-      const matchesCategory = currentCategory === "All Projects" || (p.tags && p.tags.some(tag => tag.toLowerCase() === currentCategory.toLowerCase()));
-      const searchString = (p.name + " " + (p.description || "") + " " + (p.tags || []).join(" ")).toLowerCase();
-      const matchesSearch = !currentSearch || searchString.includes(currentSearch);
+      const matchesCategory = currentCategory === "All Projects" || (p.tags || []).some((tag) => tag.toLocaleLowerCase() === currentCategory.toLocaleLowerCase());
+      const searchString = normalizeSearch([
+        p.name,
+        p.date,
+        p.description,
+        ...(p.categories || []),
+        ...(p.tags || [])
+      ].filter(Boolean).join(" "));
+      const searchTerms = currentSearch.split(" ").filter(Boolean);
+      const matchesSearch = searchTerms.length === 0 || searchTerms.every((term) => searchString.includes(term));
 
       if (matchesCategory && matchesSearch) {
         p.domNode.classList.remove("hidden-card");
@@ -225,19 +293,9 @@ function setupProjectFilters(data) {
 
     const noResultsMessage = $("noProjectResults");
     const projectsContainer = $("projects");
-    // Instead of filtering the original data.projects array, filter the DOM nodes
     const visibleProjects = Array.from(projectsContainer.children).filter(node => !node.classList.contains("hidden-card"));
-
-    if (visibleProjects.length === 0 && !noResultsMessage) {
-      const message = el("div", { 
-        id: "noProjectResults",
-        text: "No projects found matching your criteria.", 
-        style: "text-align: center; color: var(--muted); margin-top: 40px; font-size: 1.1rem;"
-      });
-      projectsContainer.appendChild(message);
-    } else if (visibleProjects.length > 0 && noResultsMessage) {
-      noResultsMessage.remove();
-    }
+    noResultsMessage.classList.toggle("hidden", visibleProjects.length > 0);
+    resultsStatus.textContent = `${visibleProjects.length} ${visibleProjects.length === 1 ? "project" : "projects"} shown`;
   }
 
   renderFilteredProjects();
@@ -332,10 +390,40 @@ function setupScrollAnimations() {
     bar.style.width = scrolled + '%';
   });
 }
+
+function setupActiveNavigation() {
+  const navAnchors = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const sections = navAnchors
+    .map((anchor) => document.querySelector(anchor.getAttribute('href')))
+    .filter(Boolean);
+
+  if (!navAnchors.length || !sections.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    const activeEntry = entries.find((entry) => entry.isIntersecting);
+    if (!activeEntry) return;
+
+    navAnchors.forEach((anchor) => {
+      const isCurrent = anchor.getAttribute('href') === `#${activeEntry.target.id}`;
+      if (isCurrent) anchor.setAttribute('aria-current', 'true');
+      else anchor.removeAttribute('aria-current');
+    });
+  }, { rootMargin: '-25% 0px -65% 0px', threshold: 0 });
+
+  sections.forEach((section) => observer.observe(section));
+}
+
 // Function to create the typing effect
 function typeEffect(elementId, text, speed) {
   const element = document.getElementById(elementId);
   if (!element) return;
+  const terminalBody = element.closest('.terminal-body');
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    element.textContent = text;
+    if (terminalBody) terminalBody.scrollTop = terminalBody.scrollHeight;
+    return;
+  }
   
   let i = 0;
   element.innerHTML = ""; // Clear it initially
@@ -348,6 +436,14 @@ function typeEffect(elementId, text, speed) {
       } else {
         element.innerHTML += text.charAt(i);
       }
+
+      // Keep the newest typed text and cursor visible inside the terminal.
+      if (terminalBody) {
+        requestAnimationFrame(() => {
+          terminalBody.scrollTop = terminalBody.scrollHeight;
+        });
+      }
+
       i++;
       setTimeout(type, speed);
     }
@@ -373,5 +469,6 @@ function typeEffect(elementId, text, speed) {
   setupProjectFilters(data); // Attaches animations and logic to those elements
   setupMobileMenu();
   setupA11y(); // Initialize Accessibility toggle
-  setupScrollAnimations()
+  setupScrollAnimations();
+  setupActiveNavigation();
 })();

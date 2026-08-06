@@ -20,7 +20,7 @@ window.SITE_DATA = {
     },
     {
       label: "Resume",
-      url: "assets/Melody_Bai_Resume.pdf",
+      url: "resume.html",
       icon: "fas fa-file-alt"
     }
   ],
@@ -76,22 +76,50 @@ window.SITE_DATA = {
 
   projects: [
     {
+      image: "",
+      name: "Academic Researcher (AP) Radar",
+      date: "July 2026 – Present",
+      startDate: "2026-07-01",
+      categories: ["Accessible Web & Full Stack"],
+      tags: ["Python", "Streamlit", "PostgreSQL", "Web Scraping"],
+      links: [],
+      description: "Building web-scraping and data-processing pipelines that store structured metrics in PostgreSQL for real-time filtering and display. Designing database schemas and backend workflows to support scalable search, filtering, data updates, and structured retrieval."
+    },
+    {
+      image: "",
+      name: "Accessible Infographic Converter",
+      date: "May 2026 – June 2026",
+      startDate: "2026-05-01",
+      categories: ["Accessible Web & Full Stack"],
+      tags: ["React", "Vite", "Django", "Python", "Accessibility"],
+      links: [
+        { label: "Website", url: "https://acc-info-convert-frontend.vercel.app/" },
+        { label: "GitHub code source", url: "https://github.com/catchafallingstar/acc_info_convert_frontend" }
+      ],
+      description: "Built a full-stack application with a React/Vite frontend and Django backend to process complex visual data. Developed secure file-upload pipelines that convert inaccessible flowcharts and timelines into screen-reader-compatible PDF documents."
+    },
+    {
       image: "assets/market.png", // Take a screenshot of the working app!
       name: "Full-Stack Django Marketplace",
+      categories: ["Accessible Web & Full Stack"],
       tags: ["Python", "Django", "Web Development", "Database"],
-      links: [{ label: "GitHub", url: "https://catchafallingstar.pythonanywhere.com/" }],
+      links: [{ label: "Website", url: "https://catchafallingstar.pythonanywhere.com/" }],
       description: "Built a dynamic marketplace application using Django 5.2 and PythonAnywhere. Architected custom Django Models, Views, and Forms to manage dynamic content and batch data loading. Implemented full CRUD functionality with user authentication, allowing users to manage owned rows, upload pictures, post comments, and utilize marketplace search and favorite features."
     },
     {
       image: "assets/ESTIR.png", // Optional: add an image for the project card (make sure to put the image in the assets folder!)
       name: "ECS Electrochemistry Knowledge Base Web Redesign & Migration",
+      date: "Sept 2024 – May 2025",
+      startDate: "2024-09-01",
+      categories: ["Accessible Web & Full Stack"],
       tags: ["Web Development", "Accessibility", "Python", "HTML/CSS/JS"],
-      links: [{ label: "GitHub", url: "https://patrickyang23.github.io/ESTIR-Web-Design/" }],
+      links: [{ label: "Website (on GitHub)", url: "https://patrickyang23.github.io/ESTIR-Web-Design/" }],
       description: "Redesigned an electrochemistry research website using HTML/CSS/JS for improved accessibility, and automated the migration of 1,000+ legacy pages using Python."
     },
     {
       image: "assets/db.png",
       name: "Social Media Database System",
+      categories: ["Systems & Backend"],
       tags: ["Java", "SQL"],
       links: [], // Add a GitHub link here later if you make the repo public!
       description: "Architected a relational database and engineered a Java/JDBC backend application. Executed data ingestion via complex SQL scripts to ensure data integrity during legacy migrations using DDL constraints, and optimized queries for efficient large-scale data retrieval."
@@ -99,6 +127,7 @@ window.SITE_DATA = {
     {
       image: "assets/lolda.png",
       name: "League of Legends Data Analysis",
+      categories: ["Data analysis"],
       tags: ["Python"],
       links: [],//{ label: "GitHub", url: "https://github.com/Catchafallingstar/..." }
       description: "Analyzed over 10,000 professional match datasets using Python and Pandas to identify gameplay meta trends and team composition correlations."
@@ -106,6 +135,7 @@ window.SITE_DATA = {
     {
       image: "assets/eecs281p3.png",
       name: "Relational Database Engine",
+      categories: ["Systems & Backend"],
       tags: ["Linux","C++"],
       links: [], // Add a GitHub link here later if you make the repo public!
       description: "Engineered a C++ in-memory database to parse and execute custom SQL queries. Reduced data retrieval time complexity using dynamic Hash and BST indexing, and developed comprehensive edge-case test suites to validate performance and ensure zero memory leaks."
@@ -113,6 +143,7 @@ window.SITE_DATA = {
     {
       image: "assets/eec280Euchure.png",
       name: "Euchre Game Simulation",
+      categories: ["Systems & Backend"],
       tags: ["C++","Linux"],
       links: [],
       description: "Developed a card game simulation utilizing Abstract Data Types (ADTs) and overloaded operators to evaluate complex, context-dependent card hierarchies. Validated core game state logic via targeted unit tests using a custom C++ testing framework."
@@ -120,6 +151,7 @@ window.SITE_DATA = {
     {
       image: "assets/img_classification.png",
       name: "CIFAR-10 Image Classification Models", // deep learning project, NN, image classification
+      categories: ["Machine Learning"],
       tags: ["Machine Learning", "Python"],
       links: [],// [{ label: "GitHub", url: "https://github.com/..." }], // Link to a repo if you upload your code!
       description: "Designed and trained Convolutional Neural Networks (CNN) and Fully Connected Networks in Python to classify CIFAR-10 images. Conducted hyperparameter tuning on learning rates and activation functions (ReLU/Sigmoid) to optimize test accuracy."
@@ -127,6 +159,7 @@ window.SITE_DATA = {
     {
       image: "assets/rein.png",
       name: "Reinforcement Learning Agents",
+      categories: ["Machine Learning"],
       tags: ["Machine Learning", "Python", "AI & Systems"],
       links: [], // [{ label: "GitHub", url: "https://github.com/..." }],
       description: "Developed Reinforcement Learning agents using Q-Learning and Active Adaptive Dynamic Programming (ADP) to navigate and maximize rewards in highly stochastic environments."
@@ -134,6 +167,7 @@ window.SITE_DATA = {
     {
       image: "assets/coverage.png",
       name: "Software Coverage Analysis",
+      categories: ["Software Testing"],
       tags: ["Automated Testing", "Python", "C++", "Java","AWS"],
       links: [], // Leave empty if you cannot post class code to GitHub!
       description: "Designed high-coverage test suites for massive legacy codebases (385,000+ lines of code) including libpng and JFreeChart. Utilized white-box and black-box methodologies, and tools like gcov and cobertura, to maximize statement and branch coverage across C, Java, and Python environments."
@@ -141,6 +175,7 @@ window.SITE_DATA = {
     {
       image: "assets/mutation.png",
       name: "Mutation Testing & Automated Fuzzing Suite",
+      categories: ["Software Testing"],
       tags: ["Automated Testing", "Python", "C++", "Java",  "AWS"],
       links: [],
       description: "Developed a custom Python testing framework utilizing Abstract Syntax Trees (AST) to perform mutation testing and evaluate test suite adequacy. Additionally, orchestrated industry-standard fuzzing tools like American Fuzzy Lop (AFL) and Randoop to automatically discover edge-case vulnerabilities in C++ and Java codebases."
@@ -148,6 +183,7 @@ window.SITE_DATA = {
     {
       image: "assets/fa.png",
       name: "Algorithmic Debugging & Fault Localization",
+      categories: ["Software Testing"],
       tags: ["Automated Testing", "Python", "AI & Systems","AWS"],
       links: [],
       description: "Engineered automated debugging algorithms in Python to accelerate software maintenance. Implemented Delta Debugging to programmatically minimize complex failing inputs, and built a Coverage-Based Fault Localization tool to mathematically isolate defective code lines using test execution traces."

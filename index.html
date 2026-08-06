@@ -4,143 +4,177 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Melody's Adventure</title>
+  <title>Melody Bai — Software Engineer</title>
+  <meta name="description" content="Melody Bai is a computer science student at the University of Michigan building reliable, accessible software." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
   <div class="bg-mesh"></div>
-  <nav class="top-nav">
+
+  <nav class="top-nav" aria-label="Primary navigation">
     <div id="scrollProgress" class="scroll-progress-bar"></div>
     <div class="nav-container">
       <div class="logo">
-        <span id="nav-name">Melody Bai</span>
+        <a href="#home" id="nav-name" aria-label="Melody Bai — Home">Melody Bai</a>
       </div>
 
-      <button id="a11yToggle" class="btn secondary-btn" aria-label="Toggle Dyslexia Friendly Font"
-        style="padding: 6px 12px; margin-left: auto; margin-right: 15px; border-color: var(--border);">
-        <i class="fas fa-universal-access"></i> A11y
+      <button id="a11yToggle" class="btn secondary-btn nav-a11y" aria-label="Toggle dyslexia-friendly font">
+        <i class="fas fa-universal-access" aria-hidden="true"></i> A11y
       </button>
 
-      <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-label="Open navigation menu"
-        aria-controls="navLinks">
+      <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-label="Open navigation menu" aria-controls="navLinks">
         <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#education-sec">Education</a></li>
+        <li><a href="#about-sec">About</a></li>
         <li><a href="#experience-sec">Experience</a></li>
-        <li><a href="#skills-sec">Skills</a></li>
         <li><a href="#projects-sec">Projects</a></li>
         <li><a href="#contact-sec">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <section id="home" class="hero container">
-    <div class="hero-content">
-      <h1 class="hero-title" id="name">Melody Bai</h1>
-      <p class="hero-subtitle" id="tagline">CS @ UMich • Accessibility • Systems</p>
+  <main>
+    <section id="home" class="hero container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Hello, I’m</p>
+        <h1 class="hero-title" id="name">Melody Bai</h1>
+        <p class="hero-subtitle" id="tagline">CS @ UMich • Accessibility • Systems</p>
 
-      <div class="terminal-window">
-        <div class="terminal-header">
-          <div class="terminal-buttons">
-            <span class="close-btn"></span>
-            <span class="minimize-btn"></span>
-            <span class="maximize-btn"></span>
+        <nav class="hero-actions" aria-label="Primary links">
+          <a class="hero-action hero-action-primary" href="#projects-sec">View projects <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+          <a class="hero-action" href="https://github.com/catchafallingstar" target="_blank" rel="noreferrer">GitHub <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          <a class="hero-action" href="resume.html">Résumé <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </nav>
+
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-buttons" aria-hidden="true">
+              <span class="close-btn"></span>
+              <span class="minimize-btn"></span>
+              <span class="maximize-btn"></span>
+            </div>
+            <div class="terminal-title">guest@melody-bai: ~</div>
           </div>
-          <div class="terminal-title">guest@melody-bai: ~</div>
+
+          <div class="terminal-body">
+            <div class="command-line">
+              <span class="prompt">guest@melody-bai:~$</span> cat about_me.txt
+            </div>
+            <div class="terminal-text">
+              <span id="typed-about"></span><span class="cursor">&nbsp;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-right">
+        <div class="hero-portrait-frame">
+          <img src="assets/headshot.jpg" alt="Portrait of Melody Bai" class="hero-portrait">
+        </div>
+      </div>
+
+      <a class="scroll-down" href="#about-sec" aria-label="Scroll down to the About section">
+        <span>About me</span>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </a>
+    </section>
+
+    <section id="about-sec" class="container section">
+      <div class="section-heading">
+        <span class="section-kicker">01 / About</span>
+        <h2 class="section-title">Accessibility-first, systems-minded.</h2>
+      </div>
+
+      <div class="about-editorial">
+        <div class="about-intro">
+          <p>I am a computer science student at the University of Michigan and an accessibility practitioner. Much of my hands-on work has focused on making information, documents, and interfaces easier for more people to use.</p>
+          <p>I bring that perspective into backend systems, test automation, and web development—building software that is reliable and understandable, not just functional.</p>
         </div>
 
-        <div class="terminal-body">
-          <div class="command-line">
-            <span class="prompt">guest@melody-bai:~$</span> cat about_me.txt
+        <div class="about-details">
+          <div class="about-block">
+            <h3>Education</h3>
+            <div id="education" class="education-wrap"></div>
           </div>
-          <div class="terminal-text">
-            <span id="typed-about"></span><span class="cursor">&nbsp;</span>
+
+          <div class="about-block">
+            <h3>Tools & technologies</h3>
+            <ul id="skills" class="skills-grid"></ul>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="hero-actions">
+    <section id="experience-sec" class="container section">
+      <div class="section-heading">
+        <span class="section-kicker">02 / Experience</span>
+        <h2 class="section-title">Where I’ve worked</h2>
+        <p class="section-subtitle">Roles in accessibility, web development, and research at the University of Michigan.</p>
       </div>
-    </div>
-    <div class="hero-portrait-frame">
-    <img src="assets/headshot.jpg" alt="Melody Bai Portrait" class="hero-portrait">
-  </div>
-  </section>
+      <div id="experience" class="timeline"></div>
+    </section>
 
-  <section id="education-sec" class="container section">
-    <h2 class="section-title">Education</h2>
-    <p class="section-subtitle">My academic background at the University of Michigan</p>
-
-    <div id="education" class="education-wrap" style="margin-top: 0; border-top: none; padding-top: 0;"></div>
-  </section>
-
-  <section id="experience-sec" class="container section">
-    <h2 class="section-title">Experience</h2>
-    <p class="section-subtitle">My professional journey</p>
-    <div id="experience" class="timeline"></div>
-  </section>
-
-  <section id="skills-sec" class="container section relative">
-    <div class="glow glow-green"></div>
-    <h2 class="section-title">Skills & Technologies</h2>
-    <p class="section-subtitle">The magical tools I use to bring ideas to life</p>
-    <ul id="skills" class="skills-grid"></ul>
-  </section>
-
-  <section id="projects-sec" class="container section">
-    <h2 class="section-title">Featured Projects</h2>
-    <p class="section-subtitle">A showcase of my creative work and technical expertise</p>
-
-    <div class="search-wrap" style="justify-content: center; margin-bottom: 2rem;">
-      <input id="projectSearch" class="search" placeholder="Search projects…" aria-label="Search projects" />
-      <button id="filterToggle" class="btn secondary-btn">Filter: All ▾</button>
-    </div>
-    <div id="projectFilters" class="filters hidden"></div>
-
-    <div id="projects" class="projects-grid"></div>
-  </section>
-
-  <section id="contact-sec" class="container section">
-    <h2 class="section-title">Contact</h2>
-    <p class="section-subtitle">Let's create something amazing together.</p>
-
-    <div class="contact-card contact-grid">
-      <div class="contact-info">
-        <h3 style="margin-top: 0; color: var(--maize); margin-bottom: 20px;">Get In Touch</h3>
-        <div id="contact"></div>
+    <section id="projects-sec" class="container section">
+      <div class="section-heading">
+        <span class="section-kicker">03 / Projects</span>
+        <h2 class="section-title">What I’ve built</h2>
+        <p class="section-subtitle">Accessibility, research, software, systems, and automation projects. Dated work is shown newest first.</p>
       </div>
 
-      <div class="contact-form-wrap">
-        <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="contact-form">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="your name" />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="youremail@example.com" />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Enter your text here..."></textarea>
-          </div>
-          <button type="submit" class="btn submit-btn">
-            Send Message <i class="fas fa-paper-plane"></i>
-          </button>
-        </form>
+      <div class="search-wrap">
+        <input id="projectSearch" class="search" type="search" placeholder="Search by project, skill, or category…" aria-label="Search projects" autocomplete="off" spellcheck="false" />
+        <button id="projectSearchClear" class="btn secondary-btn search-clear hidden" type="button">Clear search</button>
+        <button id="filterToggle" class="btn secondary-btn" aria-expanded="false" aria-controls="projectFilters">Filter: All ▾</button>
       </div>
-    </div>
-  </section>
+      <div id="projectFilters" class="filters hidden"></div>
+      <p id="projectResultsStatus" class="project-results-status" aria-live="polite"></p>
+
+      <div id="projects" class="projects-grid"></div>
+      <p id="noProjectResults" class="no-project-results hidden">No projects found matching your criteria.</p>
+    </section>
+
+    <section id="contact-sec" class="container section">
+      <div class="section-heading">
+        <span class="section-kicker">04 / Contact</span>
+        <h2 class="section-title">Let’s build something useful.</h2>
+        <p class="section-subtitle">Have a project, opportunity, or accessibility question? I would love to hear from you.</p>
+      </div>
+
+      <div class="contact-card contact-grid">
+        <div class="contact-info">
+          <h3>Get in touch</h3>
+          <div id="contact"></div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="contact-form">
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" required placeholder="your name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="youremail@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Enter your text here..."></textarea>
+            </div>
+            <button type="submit" class="btn submit-btn">
+              Send message <i class="fas fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
     <div class="container">

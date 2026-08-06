@@ -4,92 +4,519 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Résumé — Melody Bai</title>
-  <meta name="description" content="Résumé for Melody Bai, a computer science student at the University of Michigan." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css" />
+  <title>Xingyang (Melody) Bai - Resume</title>
+  <meta name="description" content="Resume of Xingyang (Melody) Bai, a University of Michigan computer science student focused on backend systems, accessibility, testing, and data pipelines." />
+  <style>
+    :root {
+      --um-blue: #00274c;
+      --um-blue-light: #1f5b89;
+      --um-maize: #ffcb05;
+      --ink: #17191d;
+      --muted: #4d5662;
+      --paper: #ffffff;
+      --canvas: #e9edf2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--canvas);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.24;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--um-blue-light);
+      text-decoration: underline;
+    }
+
+    .resume-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: min(8.5in, calc(100% - 2rem));
+      margin: 1rem auto 0.7rem;
+      gap: 1rem;
+    }
+
+    .toolbar-link,
+    .print-button {
+      min-height: 40px;
+      padding: 0.65rem 1rem;
+      border: 1px solid rgba(0, 39, 76, 0.25);
+      border-radius: 8px;
+      font: 700 0.86rem/1 Arial, Helvetica, sans-serif;
+      cursor: pointer;
+    }
+
+    .toolbar-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--um-blue);
+      background: #ffffff;
+    }
+
+    .print-button {
+      color: var(--um-blue);
+      background: var(--um-maize);
+      border-color: #e1b400;
+    }
+
+    .resume-page {
+      position: relative;
+      width: min(8.5in, calc(100% - 2rem));
+      min-height: 11in;
+      margin: 0 auto 2rem;
+      padding: 0.36in 0.5in 0.2in;
+      overflow: visible;
+      background: var(--paper);
+      box-shadow: 0 18px 50px rgba(0, 20, 40, 0.16);
+    }
+
+    .resume-page::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1.18in;
+      height: 0.92in;
+      background: var(--um-blue);
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+
+    .resume-page::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0.85in;
+      height: 5px;
+      background: var(--um-maize);
+    }
+
+    .resume-header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .resume-header h1 {
+      margin: 0 0 0 0.76in;
+      color: var(--um-blue);
+      font-size: 22pt;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-align: left;
+    }
+
+    .headline {
+      margin: 0.12rem 0 0 0.76in;
+      font-size: 10.4pt;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      margin: 0.18rem 0 0 0.76in;
+      color: var(--muted);
+      font-size: 9.2pt;
+      gap: 0.08rem 0;
+    }
+
+    .contact-line span,
+    .contact-line a {
+      white-space: nowrap;
+    }
+
+    .contact-line span:not(:last-child)::after,
+    .contact-line a:not(:last-child)::after {
+      content: " | ";
+      padding: 0 0.34rem;
+      color: #7d8792;
+    }
+
+    .professional-summary {
+      margin: 0.22rem 0 0;
+      padding: 0.08in 0.12in;
+      color: #243342;
+      background: #f2f7fb;
+      border-left: 4px solid var(--um-maize);
+      font-size: 9.6pt;
+      line-height: 1.24;
+      text-align: left;
+    }
+
+    section {
+      margin-top: 0.32rem;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 0.08in;
+      margin: 0 0 0.18rem;
+      padding: 0 0 0.08rem;
+      color: var(--um-blue);
+      background: transparent;
+      font-size: 10.6pt;
+      line-height: 1.15;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h2::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 0.08in;
+      height: 0.08in;
+      background: var(--um-maize);
+      transform: rotate(45deg);
+    }
+
+    h2::after {
+      content: "";
+      flex: 1 1 auto;
+      height: 1.4px;
+      background: #8faec6;
+    }
+
+    .entry {
+      position: relative;
+      margin-top: 0.2rem;
+      margin-left: 0.045in;
+      padding-left: 0.12in;
+      border-left: 1.2px solid #aac1d3;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .entry::before {
+      content: "";
+      position: absolute;
+      top: 0.18rem;
+      left: -0.045in;
+      width: 0.075in;
+      height: 0.075in;
+      background: var(--um-blue-light);
+      border: 1.5px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px #8faec6;
+    }
+
+    .entry + .entry {
+      margin-top: 0.34rem;
+    }
+
+    .entry-heading,
+    .education-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.35rem 1rem;
+    }
+
+    .entry-heading h3,
+    .education-row strong {
+      margin: 0;
+      color: var(--um-blue);
+      font-size: 10.3pt;
+      line-height: 1.18;
+    }
+
+    .entry-date,
+    .entry-location {
+      flex: 0 0 auto;
+      color: var(--um-blue);
+      font-size: 9.3pt;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .entry-meta,
+    .education-detail {
+      margin: 0.03rem 0 0;
+      color: var(--muted);
+      font-size: 9.3pt;
+      font-style: italic;
+    }
+
+    .education-detail {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .education-coursework {
+      margin: 0.1rem 0 0;
+    }
+
+    ul {
+      margin: 0.09rem 0 0;
+      padding-left: 1.05rem;
+    }
+
+    li {
+      margin: 0.025rem 0;
+      padding-left: 0.08rem;
+    }
+
+    li::marker {
+      color: var(--um-blue-light);
+    }
+
+    .skills-line {
+      margin: 0.1rem 0 0;
+    }
+
+    .skills-line strong {
+      color: var(--um-blue);
+    }
+
+    .skills-panel {
+      padding: 0.05in 0.09in 0.06in;
+      background: #f5f8fb;
+      border: 1px solid #dce6ef;
+      border-left: 4px solid var(--um-maize);
+    }
+
+    .skills-panel .skills-line:first-child {
+      margin-top: 0;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        font-size: 10pt;
+      }
+
+      .resume-toolbar,
+      .resume-page {
+        width: 100%;
+      }
+
+      .resume-toolbar {
+        margin-top: 0;
+        padding: 0.75rem;
+        background: var(--paper);
+      }
+
+      .resume-page {
+        min-height: 0;
+        margin: 0;
+        padding: 1rem;
+        box-shadow: none;
+      }
+
+      .resume-page::before {
+        width: 0.72in;
+        height: 0.62in;
+      }
+
+      .resume-header h1,
+      .headline,
+      .contact-line {
+        margin-left: 0.48in;
+      }
+
+      .entry-heading,
+      .education-row,
+      .education-detail {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.05rem;
+      }
+
+      .entry-date,
+      .entry-location {
+        white-space: normal;
+      }
+    }
+
+    @page {
+      size: Letter;
+      margin: 0;
+    }
+
+    @media print {
+      html,
+      body {
+        width: 8.5in;
+        height: 11in;
+        margin: 0;
+        background: #ffffff;
+      }
+
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .resume-toolbar {
+        display: none;
+      }
+
+      .resume-page {
+        width: 8.5in;
+        height: 11in;
+        min-height: 11in;
+        margin: 0;
+        padding: 0.36in 0.5in 0.2in;
+        overflow: hidden;
+        box-shadow: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
 </head>
 
-<body class="resume-page">
-  <main class="resume-shell">
-    <div class="resume-toolbar">
-      <a href="index.html">← Back to portfolio</a>
-      <button type="button" class="btn secondary-btn" onclick="window.print()">Print / Save PDF</button>
-    </div>
+<body>
+  <nav class="resume-toolbar" aria-label="Resume actions">
+    <a class="toolbar-link" href="index.html">Back to portfolio</a>
+    <button class="print-button" type="button" onclick="window.print()">Download PDF</button>
+  </nav>
 
-    <article class="resume-document">
-      <header class="resume-header">
-        <div>
-          <p class="section-kicker">Software engineering · accessibility · systems</p>
-          <h1>Melody Bai</h1>
-          <p>Computer Science at the University of Michigan · Minor in UX Design</p>
-        </div>
-        <address>
-          <a href="mailto:bxybai@umich.edu">bxybai@umich.edu</a>
-          <a href="https://github.com/catchafallingstar">github.com/catchafallingstar</a>
-          <span>Ann Arbor, Michigan</span>
-        </address>
-      </header>
+  <main class="resume-page" aria-labelledby="resume-name">
+    <header class="resume-header">
+      <h1 id="resume-name">Xingyang (Melody) Bai</h1>
+      <p class="headline">Software Engineer | Backend Systems, Accessibility, Data Pipelines, and Databases</p>
+      <address class="contact-line">
+        <span>Ann Arbor, MI</span>
+        <a href="mailto:bxybai@umich.edu">bxybai@umich.edu</a>
+        <a href="tel:+15177307221">517-730-7221</a>
+        <a href="https://www.linkedin.com/in/melody-bai-1101051212121212121212">LinkedIn</a>
+        <a href="https://github.com/catchafallingstar">GitHub</a>
+      </address>
+      <p class="professional-summary">Computer science student building accessible full-stack applications, backend and data systems, and automated testing tools.</p>
+    </header>
 
-      <section class="resume-section">
-        <h2>Experience</h2>
-        <div class="resume-entry">
-          <div class="resume-entry-heading"><h3>Accessibility Ambassador</h3><span>Jan 2025 — Present</span></div>
-          <p>Shapiro Undergraduate Library</p>
-          <ul>
-            <li>Created more than 10 step-by-step Adobe Acrobat tutorials for producing screen-reader-compatible PDFs.</li>
-            <li>Developed guides for NVDA, Read &amp; Write, and ZoomText and interviewed students and staff to improve library accessibility.</li>
-          </ul>
-        </div>
-        <div class="resume-entry">
-          <div class="resume-entry-heading"><h3>Website Developer</h3><span>Sept 2024 — May 2025</span></div>
-          <p>Dr. Madolado’s Research Group</p>
-          <ul>
-            <li>Redesigned an HTML, CSS, and JavaScript research website for accessibility and usability.</li>
-            <li>Automated the migration of more than 1,000 legacy pages with Python while preserving data integrity.</li>
-          </ul>
-        </div>
-        <div class="resume-entry">
-          <div class="resume-entry-heading"><h3>Research Assistant</h3><span>Jan 2024 — Aug 2024</span></div>
-          <p>Dr. Tang’s Research Group</p>
-          <ul>
-            <li>Created eight scientific illustrations and helped graduate researchers communicate findings through clear technical graphics.</li>
-          </ul>
-        </div>
-      </section>
+    <section aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
+      <div class="education-row">
+        <strong>University of Michigan</strong>
+        <span class="entry-location">Ann Arbor, MI</span>
+      </div>
+      <div class="education-detail">
+        <span>B.S.E. in Computer Science</span>
+        <span>Expected May 2027</span>
+      </div>
+      <p class="education-coursework"><strong>Relevant Coursework:</strong> Software Engineering and Automated Testing; Data Structures and Algorithms; Computer Organization</p>
+    </section>
 
-      <section class="resume-section">
-        <h2>Selected projects</h2>
-        <div class="resume-entry">
-          <h3>Full-Stack Django Marketplace</h3>
-          <p>Built a production marketplace with authentication, CRUD workflows, image uploads, search, comments, and favorites.</p>
-        </div>
-        <div class="resume-entry">
-          <h3>ECS Knowledge Base Redesign &amp; Migration</h3>
-          <p>Improved accessibility and automated the migration of more than 1,000 legacy electrochemistry research pages.</p>
-        </div>
-        <div class="resume-entry">
-          <h3>Software Coverage Analysis</h3>
-          <p>Designed white-box and black-box coverage strategies for C, Java, and Python systems totaling more than 385,000 lines of code.</p>
-        </div>
-      </section>
+    <section aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
 
-      <section class="resume-section resume-two-column">
-        <div>
-          <h2>Education</h2>
-          <div class="resume-entry">
-            <h3>University of Michigan — Ann Arbor</h3>
-            <p>B.S.E. Computer Science, Minor in UX Design · Expected May 2027</p>
-          </div>
+      <article class="entry">
+        <div class="entry-heading">
+          <h3>Academic Researcher (AP) Radar</h3>
+          <span class="entry-date">July 2026 - Present</span>
         </div>
-        <div>
-          <h2>Skills</h2>
-          <p>Python, C++, C, Java, SQL, JavaScript, HTML, CSS, Git, Linux, Adobe Illustrator</p>
+        <p class="entry-meta">Python, Streamlit, PostgreSQL, Web Scraping</p>
+        <ul>
+          <li>Building Python web-scraping and data pipelines that store structured metrics in PostgreSQL and power real-time Streamlit search and filtering.</li>
+          <li>Designing scalable database schemas and update workflows for structured retrieval.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-heading">
+          <h3>Accessible Infographic Converter</h3>
+          <span class="entry-date">May 2026 - June 2026</span>
         </div>
-      </section>
-    </article>
+        <p class="entry-meta">React, Vite, Django, Python</p>
+        <ul>
+          <li>Built a React/Vite and Django application with secure file uploads that converts inaccessible flowcharts and timelines into screen-reader-compatible PDFs.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-heading">
+          <h3>Automated Testing and Defect Detection Suite</h3>
+          <span class="entry-date">March 2026 - April 2026</span>
+        </div>
+        <p class="entry-meta">Python, C++, AWS</p>
+        <ul>
+          <li>Built Python/C++ automated-testing, mutation-testing, and debugging tools on AWS to isolate defects and evaluate software reliability.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-heading">
+          <h3>Social Media Database System</h3>
+          <span class="entry-date">March 2026</span>
+        </div>
+        <p class="entry-meta">Java, JDBC, SQL</p>
+        <ul>
+          <li>Designed a Java/JDBC relational database with DDL constraints and optimized SQL queries for reliable large-scale ingestion and retrieval.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-heading">
+          <h3>Relational Database Engine</h3>
+          <span class="entry-date">June 2025</span>
+        </div>
+        <p class="entry-meta">C++</p>
+        <ul>
+          <li>Built an in-memory C++ database engine with custom SQL parsing, hash/BST indexing, edge-case testing, and memory-leak validation.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Experience</h2>
+
+      <article class="entry">
+        <div class="entry-heading">
+          <h3>Dr. Maldonado's Research Group - Web Developer</h3>
+          <span class="entry-date">September 2024 - May 2025</span>
+        </div>
+        <p class="entry-meta">Ann Arbor, MI</p>
+        <ul>
+          <li>Automated the migration of 1,000+ pages with Python and redesigned an electrochemistry website in HTML5, CSS, and JavaScript to improve accessibility, navigation, and consistency.</li>
+        </ul>
+      </article>
+
+      <article class="entry">
+        <div class="entry-heading">
+          <h3>Shapiro Undergraduate Library - Accessibility Ambassador</h3>
+          <span class="entry-date">January 2025 - Present</span>
+        </div>
+        <p class="entry-meta">Ann Arbor, MI</p>
+        <ul>
+          <li>Created 10+ tutorials for Adobe Acrobat, NVDA, Read&amp;Write, and ZoomText, informed by student and staff interviews identifying accessibility barriers.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Technical Skills</h2>
+      <div class="skills-panel">
+        <p class="skills-line"><strong>Programming Languages:</strong> Python, C++, C, Java, SQL, JavaScript, HTML5/CSS, LaTeX</p>
+        <p class="skills-line"><strong>Frameworks, Databases, and Cloud:</strong> Django, React, Vite, Streamlit, Pandas, PostgreSQL, JDBC, AWS</p>
+        <p class="skills-line"><strong>Developer Tools and Concepts:</strong> Git, Linux/Unix, backend development, relational database design, data pipelines, web scraping, automated testing, mutation testing, debugging, database indexing</p>
+      </div>
+    </section>
   </main>
 </body>
 

@@ -82,11 +82,13 @@ window.SITE_DATA = {
       startDate: "2026-07-01",
       categories: ["Accessible Web & Full Stack"],
       tags: ["Python", "Streamlit", "PostgreSQL", "Web Scraping"],
-      links: [],
+      links: [
+        { label: "Code not yet available", url: "#" },
+      ],
       description: "Building web-scraping and data-processing pipelines that store structured metrics in PostgreSQL for real-time filtering and display. Designing database schemas and backend workflows to support scalable search, filtering, data updates, and structured retrieval."
     },
     {
-      image: "",
+      image: "assets/Accessible-infographic-converter.png",
       name: "Accessible Infographic Converter",
       date: "May 2026 – June 2026",
       startDate: "2026-05-01",

@@ -965,7 +965,7 @@ a:hover {
   .nav-links {
     position: fixed;
     top: 0;
-    left: -280px;
+    right: -280px;
     width: 280px;
     height: 100vh;
     background: rgba(2, 8, 19, 0.98);
@@ -1661,7 +1661,8 @@ body {
 }
 
 .project-compact .project-media {
-  height: 190px;
+  height: auto;
+  aspect-ratio: 1.69 / 1;
 }
 
 .project-compact .project-content {

@@ -101,6 +101,8 @@ window.SITE_DATA = {
     {
       image: "assets/market.png", // Take a screenshot of the working app!
       name: "Full-Stack Django Marketplace",
+      date: "March 2026 – April 2026",
+      startDate: "2026-03-21",
       categories: ["Accessible Web & Full Stack"],
       tags: ["Python", "Django", "Web Development", "Database"],
       links: [{ label: "Website", url: "https://catchafallingstar.pythonanywhere.com/" }],
@@ -119,6 +121,8 @@ window.SITE_DATA = {
     {
       image: "assets/db.png",
       name: "Social Media Database System",
+      date: "March 2026 – April 2026",
+      startDate: "2026-03-01",
       categories: ["Systems & Backend"],
       tags: ["Java", "SQL"],
       links: [], // Add a GitHub link here later if you make the repo public!

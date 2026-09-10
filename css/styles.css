@@ -766,7 +766,7 @@ main {
 .project-media img {
   height: 100%;
   width: 100%;
-  aspect-ratio: 1.6 / 1;
+  aspect-ratio: 1.72 / 1;
   min-height: 256px;
   object-fit: cover;
   object-position: top center;

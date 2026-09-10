@@ -259,7 +259,7 @@ main {
     "content image"
     "terminal terminal"
     "scroll scroll";
-  grid-template-rows: auto minmax(280px, 40vh) auto;
+  grid-template-rows: 1fr 1fr auto;
   column-gap: clamp(1rem, 2vw, 2rem);
   row-gap: 1rem;
   min-height: calc(100vh - var(--nav-height) - 20px);
@@ -335,7 +335,7 @@ main {
 }
 
 .hero-portrait-frame {
-  width: clamp(180px, 18vw, 280px);
+  width: clamp(180px, 18vw, 480px);
   aspect-ratio: 1 / 1.08;
   border-radius: 32px;
   background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(123,184,232,0.25));
@@ -361,7 +361,8 @@ main {
   grid-area: terminal;
   width: 100%;
   max-width: 100%;
-  height: clamp(280px, 40vh, 440px);
+  height: clamp(280px, 40vh, 490px);
+  height: 100%;
   min-height: 280px;
   border-radius: 18px;
   background: rgba(10, 18, 28, 0.96);
@@ -459,6 +460,7 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  align-self: end;
   gap: 0.6rem;
   margin: 0 auto;
   width: fit-content;
@@ -751,7 +753,7 @@ main {
   width: 100%;
   min-width: 0;
   height: 170%;
-  max-height: 265px;
+  min-height: 265px;
   background: linear-gradient(135deg, rgba(125,184,232,0.25), rgba(255,255,255,0.34));
   border-right: 0;
   border-bottom: 1px solid rgba(27, 45, 61, 0.08);
@@ -762,9 +764,10 @@ main {
 }
 
 .project-media img {
-  width: 100%;
   height: 100%;
-  
+  width: 100%;
+  aspect-ratio: 1.6 / 1;
+  min-height: 256px;
   object-fit: cover;
   object-position: top center;
   border-radius: 16px;

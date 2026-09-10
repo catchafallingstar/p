@@ -764,7 +764,6 @@ main {
 }
 
 .project-media img {
-  height: 100%;
   width: 100%;
   aspect-ratio: 1.72 / 1;
   min-height: 256px;
@@ -787,7 +786,11 @@ main {
   align-items: center;
   gap: 0.5rem;
 }
-
+.project-meta{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .project-category {
   display: inline-flex;
   align-items: center;
@@ -807,6 +810,7 @@ main {
   font-size: 0.77rem;
   color: var(--muted);
   font-weight: 700;
+  
 }
 
 .item-title {

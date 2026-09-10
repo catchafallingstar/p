@@ -76,10 +76,12 @@ function projectCard(p) {
 
   box.appendChild(media);
 
-  const primaryCategory = p.categories?.[0];
-  if (primaryCategory || p.date) {
+  const categories = Array.isArray(p.categories) ? p.categories : [];
+  if (categories.length || p.date) {
     const meta = el("div", { class: "project-meta" });
-    if (primaryCategory) meta.appendChild(el("span", { class: "project-context", text: primaryCategory }));
+    categories.forEach((category) => {
+      meta.appendChild(el("span", { class: "project-context", text: category }));
+    });
     if (p.date) meta.appendChild(el("span", { class: "project-date", text: p.date }));
     content.appendChild(meta);
   }
@@ -166,7 +168,7 @@ function setupProjectFilters(data) {
   const knownDomains = ["Machine Learning", "Automated Testing", "Web Development", "Accessibility", "Database", "Databases", "AI & Systems", "Web Scraping"];
   const knownTechnologies = ["Python", "C++", "SQL", "JavaScript", "HTML/CSS/JS", "Java", "React", "Vite", "Django", "Streamlit", "PostgreSQL", "AWS", "Linux"];
 
-  const normalizeSearch = (value) => value
+  const normalizeSearch = (value) => String(value ?? "")
     .toLocaleLowerCase()
     .trim()
     .replace(/[–—-]/g, " ")
@@ -278,7 +280,7 @@ function setupProjectFilters(data) {
         ...(p.categories || []),
         ...(p.tags || [])
       ].filter(Boolean).join(" "));
-      const searchTerms = currentSearch.split(" ").filter(Boolean);
+      const searchTerms = currentSearch.split(/\s+/).filter(Boolean);
       const matchesSearch = searchTerms.length === 0 || searchTerms.every((term) => searchString.includes(term));
 
       if (matchesCategory && matchesSearch) {
@@ -305,19 +307,12 @@ function setupProjectFilters(data) {
 function setupA11y() {
   const toggle = $("a11yToggle");
   if (!toggle) return;
+  toggle.setAttribute("aria-pressed", "false");
   toggle.addEventListener("click", () => {
     document.body.classList.toggle("dyslexia-mode");
     const isActive = document.body.classList.contains("dyslexia-mode");
     toggle.setAttribute("aria-pressed", isActive);
-    
-    // Optional: Switch icon styling so the user knows it's active
-    if (isActive) {
-      toggle.style.backgroundColor = "var(--maize)";
-      toggle.style.color = "var(--bg)";
-    } else {
-      toggle.style.backgroundColor = "transparent";
-      toggle.style.color = "var(--text)";
-    }
+    toggle.classList.toggle("is-active", isActive);
   });
 }
 
@@ -326,43 +321,57 @@ function setupA11y() {
 function setupMobileMenu() {
   const toggleBtn = $("mobileToggle");
   const navLinks = $("navLinks");
+  const navContainer = document.querySelector(".nav-container");
+
+  if (!toggleBtn || !navLinks || !navContainer) return;
+
   const icon = toggleBtn.querySelector("i");
-  const links = navLinks.querySelectorAll("a");
+  const closeMenu = () => {
+    navLinks.classList.remove("active");
+    toggleBtn.setAttribute("aria-expanded", "false");
+    toggleBtn.setAttribute("aria-label", "Open navigation menu");
 
-  // Toggle the menu when clicking the hamburger icon
-  toggleBtn.addEventListener("click", () => {
-    const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
-    
-    // Toggle the visual menu
-    navLinks.classList.toggle("active");
-
-    // Toggle ARIA attributes for screen readers
-    toggleBtn.setAttribute("aria-expanded", !isExpanded);
-    toggleBtn.setAttribute("aria-label", !isExpanded ? "Close navigation menu" : "Open navigation menu");
-
-    // Switch the icon between Hamburger (bars) and X (times)
-    if (navLinks.classList.contains("active")) {
-      icon.classList.remove("fa-bars");
-      icon.classList.add("fa-times");
-    } else {
+    if (icon) {
       icon.classList.remove("fa-times");
       icon.classList.add("fa-bars");
     }
+  };
+
+  const openMenu = () => {
+    navLinks.classList.add("active");
+    toggleBtn.setAttribute("aria-expanded", "true");
+    toggleBtn.setAttribute("aria-label", "Close navigation menu");
+
+    if (icon) {
+      icon.classList.remove("fa-bars");
+      icon.classList.add("fa-times");
+    }
+  };
+
+  toggleBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    if (navLinks.classList.contains("active")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
-  // Automatically close the sidebar when a link is clicked
-  links.forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-      icon.classList.remove("fa-times");
-      icon.classList.add("fa-bars");
-      
-      // Reset ARIA attributes when a link closes the menu
-      toggleBtn.setAttribute("aria-expanded", "false");
-      toggleBtn.setAttribute("aria-label", "Open navigation menu");
-    });
+  navLinks.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+    if (link) closeMenu();
+  });
+
+  document.addEventListener("click", (event) => {
+    const clickedInsideNav = navContainer.contains(event.target);
+
+    if (!clickedInsideNav && navLinks.classList.contains("active")) {
+      closeMenu();
+    }
   });
 }
+
 function setupScrollAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
